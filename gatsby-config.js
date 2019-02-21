@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Prosfera`,
+    description: `Private page of construction company`,
+    author: `@bartekCis`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -30,5 +30,14 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        baseUrl: `prosfera.local`,
+        protocol: `http`,
+        hostingWPCOM: false,
+        useACF: true,
+      },
+    },
   ],
 }
