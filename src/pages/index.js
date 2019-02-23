@@ -36,3 +36,51 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+
+// import React, {Component} from "react"
+
+// const darkBlue = 'rgba(	9, 29, 43, .8)';
+// const white = '#fff';
+
+
+// const StyledWrapper = styled.div`
+//   font-family: 'Montserrat';
+//   display: flex;
+//   width: 100vw;
+//   height: 90vh;
+//   position: relative;
+// `;
+
+// class Hero extends Component {
+//     componentDidMount() {
+//         const playVideo = () => {
+//             const video = document.querySelector('video');
+//             video.autoplay = true;
+//             video.playbackRate = 0.6;
+//         };
+    
+//         playVideo();
+//     }
+
+//     render() {
+//         return (
+//             <StyledWrapper>
+//                 <VideoWrapper>
+//                     <Video autoplay muted loop playsinline>
+//                         <source src={heroVideo} type="video/mp4"/>
+//                     </Video>
+//                     <Content>
+//                         <ContentWrapper>
+//                             <H1>Wentylacje i Instalacje p. Pożarowe</H1>
+//                             <Text>Ponad 10 lat dbamy o Twoje powietrze. Budujemy instalacje dostosowane do Twoich potrzeb.</Text>
+//                             <Contact> </Contact>
+//                         </ContentWrapper>
+//                     </Content>
+//                 </VideoWrapper>
+//             </StyledWrapper>
+//         ) 
+//     }
+// }
+
+// export default Hero
