@@ -3,7 +3,8 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 
-const Layout = ({ children }) => (
+const Layout = () => (
+  // { children }
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -24,7 +25,7 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <main>{children}</main>
+          {/* <main>{children}</main> */}
           {/* <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
@@ -37,7 +38,7 @@ const Layout = ({ children }) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  // children: PropTypes.node.isRequired,
 }
 
 export default Layout

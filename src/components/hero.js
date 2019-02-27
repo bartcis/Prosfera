@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import HeroImage from './heroImage';
 
-const darkBlue = 'rgba(	9, 29, 43, .8)';
+const darkBlue = 'rgba(	9, 29, 43, .9)';
 const white = '#fff';
 
 const StyledWrapper = styled.div`
@@ -14,6 +14,7 @@ const StyledWrapper = styled.div`
   display: flex;
   width: 100vw;
   height: 90vh;
+  box-shadow: 0px 10px 60px 0px rgba(122,122,122,1);
 `;
 
 const PictureWrapper = styled.div`
@@ -25,17 +26,23 @@ const PictureWrapper = styled.div`
 
 const Picture = styled.div`
     position: absolute;
-    top: 0;
-    left: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 1;
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 120%;
+    transition: all 10s linear;
+    &.zoomIn {
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 
 const Content = styled.div`
     position: absolute;
-    background-color: ${darkBlue};
+    background-color: rgba(	9, 29, 43, .9);
     width: 100%;
     height: 100%;
     display: flex;
@@ -44,6 +51,11 @@ const Content = styled.div`
     align-items: center;
     color: ${white};
     z-index: 10;
+    transition: all 10s linear;
+    opacity: 1;
+    &.addOpacity {
+        background-color: rgba(	9, 29, 43, .6);
+    }
 `;
 
 const ContentWrapper = styled.div`
@@ -109,21 +121,32 @@ const Contact = styled.div`
     }
 `;
 
-const Hero = () => (
-    <StyledWrapper>
-        <PictureWrapper>
-            <Picture>
-                <HeroImage/>
-            </Picture>
-            <Content>
-                <ContentWrapper>
-                    <H1>Wentylacje i Instalacje p. Pożarowe</H1>
-                    <Text>Ponad 10 lat dbamy o Twoje powietrze. Budujemy instalacje dostosowane do Twoich potrzeb.</Text>
-                    <Contact> </Contact>
-                </ContentWrapper>
-            </Content>
-        </PictureWrapper>
-    </StyledWrapper>
-) 
+class Hero extends Component {
+    componentDidMount() {
+        setTimeout(()=> {
+            document.querySelector('#hero-image').classList.add('zoomIn');
+            document.querySelector('#content').classList.add('addOpacity');
+        }, 100)
+    }
+
+    render() {
+        return (
+            <StyledWrapper>
+                <PictureWrapper>
+                    <Picture id="hero-image">
+                        <HeroImage/>
+                    </Picture>
+                    <Content id="content">
+                        <ContentWrapper>
+                            <H1>Wentylacje i Instalacje p. Pożarowe</H1>
+                            <Text>Ponad 10 lat dbamy o Twoje powietrze. Budujemy instalacje dostosowane do Twoich potrzeb.</Text>
+                            <Contact> </Contact>
+                        </ContentWrapper>
+                    </Content>
+                </PictureWrapper>
+            </StyledWrapper>
+        ) 
+    }
+}
 
 export default Hero

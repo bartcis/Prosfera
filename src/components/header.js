@@ -9,6 +9,7 @@ import email from '../images/prosfera_head_email.svg';
 import phone from '../images/prosfera_head_phone.svg';
 
 const blue = '#2880be';
+const white = '#fff';
 
 const StyledWrapper = styled.header`
   background-color: transparent;
@@ -32,7 +33,7 @@ const Contact = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 1rem 0;
-  color: #fff;
+  color: ${white};
 `;
 
 const Method = styled.div`
@@ -56,6 +57,14 @@ const Method = styled.div`
     ::after {
     content: '|';
     padding: 0 0 0 1rem;
+    }
+  }
+  a {
+    color: ${white};
+    text-decoration: none;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    :hover {
+      color: ${blue};
     }
   }
 `;
@@ -84,7 +93,7 @@ const Menu = styled.div`
     padding: 1rem 1rem;
     cursor: pointer;
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    color: #fff;
+    color: ${white};
     position: relative;
 
     ::before {
@@ -95,7 +104,7 @@ const Menu = styled.div`
       background-color: ${blue};
       bottom: -1px;
       right: 0%;
-      transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 
     :hover {
@@ -109,7 +118,7 @@ const Menu = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #fff;
+  color: ${white};
   padding: 1rem 1rem;
   position: relative;
 
@@ -121,7 +130,7 @@ const StyledLink = styled(Link)`
     background-color: ${blue};
     bottom: -1px;
     right: 0%;
-    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   :hover {
@@ -136,8 +145,12 @@ const Header = ({ siteTitle }) => (
   <StyledWrapper>
     <Content>
       <Contact>
-        <Method className="isMail">kamil.kudyba@pro-sfera.pl</Method>
-        <Method>+48 792 187 247</Method>
+        <Method className="isMail">
+          <a href="mailto:kamil.kudyba@pro-sfera.pl">kamil.kudyba@pro-sfera.pl</a>
+        </Method>
+        <Method>
+          <a href="tel:+48-792-187-247">+48 792 187 247</a>
+        </Method>
       </Contact>
       <Navigation>
         <Link to='/'>
