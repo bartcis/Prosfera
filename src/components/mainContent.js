@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import Services from './services';
 import Portfolio from './portfolio';
+import About from './about';
+import Sky from './sky';
 
 const mapStateToProps = (state) => ({ 
     scrollState: state.app.scrollState,
@@ -24,6 +26,12 @@ class MainContent extends Component {
                 </Scroller>
                 <Scroller className="portfolio">
                     <Portfolio/>
+                </Scroller>
+                <Scroller className="about">
+                    <About/>
+                </Scroller>
+                <Scroller>
+                    <Sky/>
                 </Scroller>
            </>
         ) 

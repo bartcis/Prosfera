@@ -3,11 +3,11 @@ import { StaticQuery, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 
-const ServicesImage = () => (
+const TestimonialsImage = () => (
   <StaticQuery
     query = {graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "prosfera_services.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "prosfera_testimonials.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 500) {
               ...GatsbyImageSharpFluid
@@ -19,10 +19,16 @@ const ServicesImage = () => (
     render = {data => 
     
     <Img css={css`
-            box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
-        `}
-        fluid={data.placeholderImage.childImageSharp.fluid} />
+        width: 400px;
+        height: 500px;
+        bottom: -50px;
+        left: 0px;
+        position: absolute !important;
+        z-index: -1;
+        opacity: .4;
+    `}
+    fluid={data.placeholderImage.childImageSharp.fluid} />
     }
   />
 )
-export default ServicesImage
+export default TestimonialsImage

@@ -1,12 +1,13 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import { css } from '@emotion/core';
 
-const HeroImage = () => (
+const WarsawImage = () => (
   <StaticQuery
     query = {graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "prosfera-hero-min.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "prosfera-warsaw.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1920) {
               ...GatsbyImageSharpFluid
@@ -17,8 +18,11 @@ const HeroImage = () => (
     `}
     render = {data => 
     
-    <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+    <Img css={css`
+        opacity: .5;
+    `}
+    fluid={data.placeholderImage.childImageSharp.fluid} />
     }
   />
 )
-export default HeroImage
+export default WarsawImage
