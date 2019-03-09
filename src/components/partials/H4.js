@@ -1,19 +1,19 @@
-import PlayFair from '../assets/playFair';
 import styled from 'styled-components';
 
-const H1 = styled(PlayFair)`
-    font-size: 2rem;
+const H4 = styled.h4`
+    font-family: 'Montserrat';
+    font-size: 1rem;
+    text-transform: uppercase;
     color: ${(props) => props.isWhite ?
         ({theme}) => theme.colors.white :
-        ({theme}) => theme.colors.darkBlue};
+        ({theme}) => theme.colors.blue};
     font-weight: 400;
-    z-index: 100;
-    position: relative;
+    margin: 0 0 1rem;
     padding: 0 1rem;
     @media (min-width: 600px) {
-        font-size: 3.5rem;
+        font-size: .8rem;
         padding: 0;
     }
 `;
 
-export default H1;
+export default H4;

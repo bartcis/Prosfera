@@ -2,21 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import { css } from '@emotion/core';
 
-import Wrapper from './partials/Wrapper';
-import H1 from './partials/H1';
-import H2 from './partials/H2';
-import H3 from './partials/H3';
-import Text from './partials/Text';
-import Button from './partials/Button';
+import Wrapper from '../partials/Wrapper';
+import H1 from '../partials/H1';
+import H2 from '../partials/H2';
+import H3 from '../partials/H3';
+import Text from '../partials/Text';
+import Button from '../partials/Button';
 
-import sketchIcon from '../images/sketch.svg';
-import ServicesImage from '../images/prosfera_services.jpg';
+import sketchIcon from '../../images/sketch.svg';
+import ServicesImage from '../../images/prosfera_services.jpg';
 
 const Description = styled.div`
-    height: 400px;
-    width: 350px;
-    margin: 2rem;
+    height: auto;
+    width: 100%;
     text-align: center;
+    @media (min-width: 600px) {
+        width: 350px;
+        margin: 2rem;
+    }
 `;
 
 const Item = styled(Description)`
@@ -26,17 +29,28 @@ const Item = styled(Description)`
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    margin: 1rem 0;
+    @media (min-width: 600px) {
+        margin: 0;
+    }
     .image {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         width: 100%;
-        height: 200px;
+        height: 150px;
         transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        @media (min-width: 600px) {
+            height: 200px;
+        }
     }
     .description {
-        height: 200px;
-        padding: 2rem;
+        height: 150px;
+        padding: 2rem 0;
+        @media (min-width: 600px) {
+            padding: 2rem;
+            height: 200px;
+        }
     }
     .extra {
         width: 100%;
@@ -55,16 +69,21 @@ const Item = styled(Description)`
             content: 'Szczegóły inwestycji';
             opacity: 0;
             transition: all .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+            font-size: .8rem;
+            @media (min-width: 600px) {
+                font-size: 1rem;
+            }
         }
     }
     :hover {
         .image {
             transform: scale(1.05);
         }
-        .description {
-        }
         .extra {
-        height: 60px;
+        height: 30px;
+        @media (min-width: 600px) {
+            height: 60px;
+        }
         ::after {
             opacity: 1;
         }
@@ -74,21 +93,30 @@ const Item = styled(Description)`
 
 const Container = styled.div`
     position: relative;
-    height: 550px;
+    height: auto;
     width: 100%;
     overflow: hidden;
     display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    margin: 2rem 0;
-
+    padding: 2rem 1rem;
+    @media (min-width: 600px) {
+        height: 550px;
+        padding: 2rem 0;
+    }
     :before {
         content: '';
         position: absolute;
         background-color: ${({theme}) => theme.colors.darkBlue};
-        width: 600px;
+        width: 100%;
         height: 100%;
         left: 0;
         z-index: -1;
+        @media (min-width: 600px) {
+            width: 600px;
+        }
     }
 `;
 
@@ -97,7 +125,10 @@ const Icon = styled.div`
     background-repeat: no-repeat;
     width: 60px;
     height: 60px;
-    margin: 6rem auto 0;
+    margin: 3rem auto 0;
+    @media (min-width: 600px) {
+        margin: 6rem auto 0;
+    }
 `;
 
 const WideColumn = styled.div`

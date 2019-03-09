@@ -9,17 +9,16 @@ import { scrollTo as scrollToAction } from '../state/app';
 import logo from '../images/prosfera_logo_white.svg';
 import email from '../images/prosfera_head_email.svg';
 import phone from '../images/prosfera_head_phone.svg';
-import MobileMenu from '../components/partials/MobileMenu';
-
 
 const StyledWrapper = styled.header`
-  background-color: transparent;
+  background-color: ${({theme}) => theme.colors.darkBlue};
   height: auto;
   padding: 0 1rem;
   font-family: 'Montserrat';
   position: fixed;
+  top: 0;
   width: 100vw;
-  z-index: 999;
+  box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
 `;
 
 const Content = styled.div`
@@ -33,28 +32,22 @@ const Content = styled.div`
 const Contact = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: 1rem 0;
+  padding: 1rem 0 0;
   color: ${({theme}) => theme.colors.white};
 `;
 
 const Method = styled.div`
   font-weight: 100;
   font-size: .8rem;
-  padding: 0 .4rem;
-  @media (min-width: 600px) {
-    padding: 0 .5rem;
-  }
-  :before {
+  padding: 0 .5rem;
+
+  ::before {
     content: '';
     background-image: url(${phone});
     background-repeat: no-repeat;
     width: 30px;
     height: 30px;
     padding: 0 .9rem;
-    display: none;
-    @media (min-width: 600px) {
-      display: block;
-    }
   }
 
   &.isMail {
@@ -64,10 +57,6 @@ const Method = styled.div`
     ::after {
     content: '|';
     padding: 0 0 0 1rem;
-    display: none;
-    @media (min-width: 600px) {
-      display: block;
-    }
     }
   }
   a {
@@ -84,64 +73,51 @@ const Navigation = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 0 1rem;
 `;
 
 const Logo = styled.div`
-  width: 150px;
-  height: 40px;
+  width: 300px;
+  height: 80px;
   background-image: url(${logo});
   background-repeat: no-repeat;
   background-position: center;
-  @media (min-width: 600px) {
-    width: 300px;
-    height: 80px;
-  }
 `;
 
 const Menu = styled.div`
   font-weight: 100;
   border-bottom: 1px solid rgba(255, 255, 255, .5);
   padding: 1rem 0rem;
-  display: none;
-  @media (min-width: 600px) {
-    display: block;
-  }
-  span {
-    padding: 1rem 1rem;
-    cursor: pointer;
-    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    color: ${({theme}) => theme.colors.white};
-    position: relative;
-
-    ::before {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background-color: ${({theme}) => theme.colors.blue};
-      bottom: -1px;
-      right: 0%;
-      transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    }
-
-    :hover {
-      color: ${({theme}) => theme.colors.blue};
-      ::before {
-        width: 100%;
-      }
-    }
-  }
 `;
 
-console.log(window.addEventListener('scroll', console.log('abc')));
+const MenuLink = styled(Link)`
+  padding: 1rem 1rem;
+  cursor: pointer;
+  transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: ${({theme}) => theme.colors.white};
+  position: relative;
+  text-decoration: none;
+  ::before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: ${({theme}) => theme.colors.blue};
+    bottom: -1px;
+    right: 0%;
+    transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 
-function Header ({scrollTo}) {
-  const menu = document.querySelector('#menu');
-
-  console.log(menu);
-
+  :hover {
+    color: ${({theme}) => theme.colors.blue};
+    ::before {
+      width: 100%;
+    }
+  }
+`
+const BlockHeader = ({scrollTo}) => {
   return(
-    <StyledWrapper id="menu">
+    <StyledWrapper>
       <Content>
         <Contact>
           <Method className="isMail">
@@ -156,27 +132,26 @@ function Header ({scrollTo}) {
             <Logo></Logo>
           </Link>
           <Menu>
-            <span onClick={() => scrollTo('services')}>Usługi</span>
-            <span onClick={() => scrollTo('portfolio')}>Realizacje</span>
-            <span onClick={() => scrollTo('about')}>O Firmie</span>
-            <span onClick={() => scrollTo('contact')}>Kontakt</span>
+            <MenuLink to="/#services">Usługi</MenuLink>
+            <MenuLink to="/#services">Realizacje</MenuLink>
+            <MenuLink to="/#about">O Firmie</MenuLink>
+            <MenuLink to="/#contact">Kontakt</MenuLink>
           </Menu>
-          <MobileMenu></MobileMenu>
         </Navigation>
       </Content>
     </StyledWrapper>
   )
 }
 
-Header.propTypes = {
+BlockHeader.propTypes = {
   siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
+BlockHeader.defaultProps = {
   siteTitle: ``,
 }
 
 export default connect(
   state => ({ scrollState: state.app.scrollState }),
   dispatch => ({ scrollTo: section => dispatch(scrollToAction(section)) }),
-)(Header);
+)(BlockHeader);

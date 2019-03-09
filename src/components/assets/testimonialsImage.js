@@ -19,7 +19,8 @@ const TestimonialsImage = () => (
     render = {data => 
     
     <Img css={css`
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
         height: 500px;
         bottom: -50px;
         left: 0px;

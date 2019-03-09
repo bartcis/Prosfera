@@ -2,16 +2,19 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-import WarsawImage from './assets/warsawImage';
-import CloudImage1 from './assets/cloudImage1';
+import WarsawImage from '../assets/warsawImage';
+import CloudImage1 from '../assets/cloudImage1';
 
 
 const Container = styled.div`
     margin-top: 10rem;
     position: relative;
     perspective: 10px;
-    height: 60vh;
+    height: 25vh;
     overflow-y: auto;
+    @media (min-width: 600px) {
+        height: 50vh;
+    }
 `;
 
 class Sky extends Component {

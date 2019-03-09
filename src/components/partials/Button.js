@@ -16,7 +16,8 @@ const Button = styled.div`
     color: ${(props) => props.isWhite ?
         ({theme}) => theme.colors.white :
         ({theme}) => theme.colors.darkBlue};
-
+    z-index: 100;
+    
     ::before {
         content: '';
         position: absolute;

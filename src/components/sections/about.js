@@ -1,18 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Wrapper from './partials/Wrapper';
-import H1 from './partials/H1';
-import H2 from './partials/H2';
-import H3 from './partials/H3';
-import Text from './partials/Text';
-import AboutImage from './assets/aboutImage';
-import TestimonialsImage from './assets/testimonialsImage';
+import Wrapper from '../partials/Wrapper';
+import H1 from '../partials/H1';
+import H2 from '../partials/H2';
+import H3 from '../partials/H3';
+import Text from '../partials/Text';
+import AboutImage from '../assets/aboutImage';
+import TestimonialsImage from '../assets/testimonialsImage';
 
 const Column = styled.div`
-  width: 50%;
-  padding: 1rem;
-  text-align: left;
+    width: 100%;
+    padding: 0 1rem 1rem;
+    text-align: left;
+    @media (min-width: 600px) {
+        width: 50%;
+        padding: 1rem;
+    }
 `;
 
 const WideColumn = styled.div`
@@ -21,15 +25,23 @@ const WideColumn = styled.div`
 `;
 
 const NarrowColumn = styled.div`
-    width: 40%;
+    width: 100%;
     height: 200px;
     box-shadow: 0px 10px 30px 0px ${({theme}) => theme.colors.shadow};
-    margin: 2rem;
-    padding: 2rem;
+    margin: 1rem;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: ${({theme}) => theme.colors.white};
+    p {
+        font-size: 1rem;
+    }
+    @media (min-width: 600px) {
+        margin: 2rem 1rem;
+        width: 45%;
+        padding: 2rem;
+    }
 `;
 
 const Container = styled.div`

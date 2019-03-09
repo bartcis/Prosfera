@@ -5,9 +5,10 @@ import { theme } from '../components/utils/theme';
 
 import SEO from '../components/seo';
 import Header from '../components/header';
-import Hero from '../components/hero';
-import MainContent from '../components/mainContent';
+import StyledHero from '../components/assets/heroImage';
 
+import MainContent from '../components/mainContent';
+import Footer from '../components/footer';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -26,8 +27,9 @@ const IndexPage = () => (
       <SEO title='Home' keywords={[`prosfera`, `wentylacje`, `zabezpieczenia p poz`]} />
       <GlobalStyle/>
       <Header/>
-      <Hero/>
+      <StyledHero/>
       <MainContent/>
+      <Footer/>
     </> 
   </ThemeProvider>
 )
