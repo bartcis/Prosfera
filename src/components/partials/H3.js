@@ -10,6 +10,7 @@ const H3 = styled.h3`
     font-weight: 100;
     margin: 0;
     padding: 0 1rem;
+    width: 100%;
     @media (min-width: 600px) {
         padding: 0;
         font-size: 1rem;

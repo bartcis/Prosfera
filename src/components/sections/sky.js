@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import WarsawImage from '../assets/warsawImage';
@@ -10,11 +9,8 @@ const Container = styled.div`
     margin-top: 10rem;
     position: relative;
     perspective: 10px;
-    height: 25vh;
+    height: auto;
     overflow-y: auto;
-    @media (min-width: 600px) {
-        height: 50vh;
-    }
 `;
 
 class Sky extends Component {

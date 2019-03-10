@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -11,15 +11,18 @@ import email from '../images/prosfera_head_email.svg';
 import phone from '../images/prosfera_head_phone.svg';
 import MobileMenu from '../components/partials/MobileMenu';
 
-
 const StyledWrapper = styled.header`
-  background-color: transparent;
+  background: transparent;
   height: auto;
   padding: 0 1rem;
   font-family: 'Montserrat';
   position: fixed;
   width: 100vw;
   z-index: 999;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &.block {
+    background: rgba(7, 57, 85, .7);
+  }
 `;
 
 const Content = styled.div`
@@ -33,27 +36,34 @@ const Content = styled.div`
 const Contact = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: 1rem 0;
   color: ${({theme}) => theme.colors.white};
+  padding: 1rem 0;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &.block {
+    padding: 1rem 0 0;
+  }
 `;
 
 const Method = styled.div`
   font-weight: 100;
   font-size: .8rem;
   padding: 0 .4rem;
-  @media (min-width: 600px) {
+  @media (min-width: 768px) {
     padding: 0 .5rem;
+    display: flex;
+    align-items: center;
   }
   :before {
     content: '';
     background-image: url(${phone});
     background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
+    
     padding: 0 .9rem;
     display: none;
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
       display: block;
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -65,7 +75,7 @@ const Method = styled.div`
     content: '|';
     padding: 0 0 0 1rem;
     display: none;
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
       display: block;
     }
     }
@@ -84,6 +94,10 @@ const Navigation = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem 0;
+  @media (min-width: 768px) {
+    padding: 0 0 1rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -92,7 +106,11 @@ const Logo = styled.div`
   background-image: url(${logo});
   background-repeat: no-repeat;
   background-position: center;
-  @media (min-width: 600px) {
+  @media (min-width: 768px) {
+    width: 200px;
+    height: 60px;
+  }
+  @media (min-width: 1280px) {
     width: 300px;
     height: 80px;
   }
@@ -133,39 +151,73 @@ const Menu = styled.div`
   }
 `;
 
-console.log(window.addEventListener('scroll', console.log('abc')));
+class Header extends Component {
+  constructor(props){
+    super(props);
+    this.modifyHeader = this.modifyHeader.bind(this);
+    this.animateHeader = this.animateHeader.bind(this);
+    this.state = {
+      transparentMenu: false
+    };
 
-function Header ({scrollTo}) {
-  const menu = document.querySelector('#menu');
+  }
 
-  console.log(menu);
+  componentDidMount() {
+    window.addEventListener('scroll', this.modifyHeader);
+  }
 
-  return(
-    <StyledWrapper id="menu">
-      <Content>
-        <Contact>
-          <Method className="isMail">
-            <a href="mailto:kamil.kudyba@pro-sfera.pl">kamil.kudyba@pro-sfera.pl</a>
-          </Method>
-          <Method>
-            <a href="tel:+48-792-187-247">+48 792 187 247</a>
-          </Method>
-        </Contact>
-        <Navigation>
-          <Link to='/'>
-            <Logo></Logo>
-          </Link>
-          <Menu>
-            <span onClick={() => scrollTo('services')}>Usługi</span>
-            <span onClick={() => scrollTo('portfolio')}>Realizacje</span>
-            <span onClick={() => scrollTo('about')}>O Firmie</span>
-            <span onClick={() => scrollTo('contact')}>Kontakt</span>
-          </Menu>
-          <MobileMenu></MobileMenu>
-        </Navigation>
-      </Content>
-    </StyledWrapper>
-  )
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.modifyHeader);
+  }
+
+  modifyHeader() {
+    if (document.body.clientWidth < 768) {
+      this.animateHeader(500);
+    } else if (document.body.clientWidth < 1440 && document.body.clientWidth >= 768) {
+      this.animateHeader(600);
+    } else {
+      this.animateHeader(700);
+    }
+  }
+
+  animateHeader(treshold) {
+    if (window.pageYOffset > treshold) {
+      document.querySelector('#menu').classList.add('block');
+      document.querySelector('#contact-menu').classList.add('block');      
+    } else {
+      document.querySelector('#menu').classList.remove('block');
+      document.querySelector('#contact-menu').classList.remove('block');
+    }
+  }
+
+  render() {
+    return (
+      <StyledWrapper id="menu">
+        <Content>
+          <Contact id="contact-menu">
+            <Method className="isMail">
+              <a href="mailto:kamil.kudyba@pro-sfera.pl">kamil.kudyba@pro-sfera.pl</a>
+            </Method>
+            <Method>
+              <a href="tel:+48-792-187-247">+48 792 187 247</a>
+            </Method>
+          </Contact>
+          <Navigation>
+            <Link to='/'>
+              <Logo></Logo>
+            </Link>
+            <Menu>
+              <span onClick={() => this.props.scrollTo('services')}>Usługi</span>
+              <span onClick={() => this.props.scrollTo('portfolio')}>Realizacje</span>
+              <span onClick={() => this.props.scrollTo('about')}>O Firmie</span>
+              <span onClick={() => this.props.scrollTo('contact-form')}>Kontakt</span>
+            </Menu>
+            <MobileMenu></MobileMenu>
+          </Navigation>
+        </Content>
+      </StyledWrapper>
+    )
+  }
 }
 
 Header.propTypes = {

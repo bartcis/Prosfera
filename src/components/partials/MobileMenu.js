@@ -9,6 +9,9 @@ const Container = styled.div`
     cursor: pointer;
     margin: 0 1rem;
     position: relative;
+    @media (min-width: 768px) {
+        display: none;
+    }
 `;
 
 const BarFull = styled.div`

@@ -10,6 +10,7 @@ const H4 = styled.h4`
     font-weight: 400;
     margin: 0 0 1rem;
     padding: 0 1rem;
+    width: 100%;
     @media (min-width: 600px) {
         font-size: .8rem;
         padding: 0;

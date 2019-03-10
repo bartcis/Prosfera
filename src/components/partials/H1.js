@@ -10,6 +10,7 @@ const H1 = styled(PlayFair)`
     z-index: 100;
     position: relative;
     padding: 0 1rem;
+    width: 100%;
     @media (min-width: 600px) {
         font-size: 3.5rem;
         padding: 0;

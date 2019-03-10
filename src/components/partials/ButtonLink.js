@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
-const Button = styled.div`
+const ButtonLink = styled(Link)`
   margin: auto;
   width: 150px;
   border: 1px solid ${(props) => props.isWhite ?
@@ -8,6 +9,7 @@ const Button = styled.div`
     ({theme}) => theme.colors.darkBlue};
   padding: 1rem 2rem;
   font-family: 'Montserrat';
+  text-decoration: none;
   cursor: pointer;
   margin-top: 2rem;
   font-weight: 100;
@@ -42,4 +44,4 @@ const Button = styled.div`
   }
 `;
 
-export default Button;
+export default ButtonLink;

@@ -11,7 +11,7 @@ const Column = styled.div`
     width: 100%;
     padding: 1rem;
     text-align: left;
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
         width: 50%;
     }
 `;

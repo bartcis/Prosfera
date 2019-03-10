@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 import Header from '../components/header';
 import StyledHero from '../components/assets/heroImage';
 
-import MainContent from '../components/mainContent';
+import Layout from '../components/Layout';
 import Footer from '../components/footer';
 
 const GlobalStyle = createGlobalStyle`
@@ -28,7 +28,7 @@ const IndexPage = () => (
       <GlobalStyle/>
       <Header/>
       <StyledHero/>
-      <MainContent/>
+      <Layout/>
       <Footer/>
     </> 
   </ThemeProvider>

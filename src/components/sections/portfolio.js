@@ -7,184 +7,214 @@ import H1 from '../partials/H1';
 import H2 from '../partials/H2';
 import H3 from '../partials/H3';
 import Text from '../partials/Text';
-import Button from '../partials/Button';
+import ButtonLink from '../partials/ButtonLink';
 
 import sketchIcon from '../../images/sketch.svg';
 import ServicesImage from '../../images/prosfera_services.jpg';
 
 const Description = styled.div`
-    height: auto;
-    width: 100%;
-    text-align: center;
-    @media (min-width: 600px) {
-        width: 350px;
-        margin: 2rem;
-    }
+  height: auto;
+  width: 100%;
+  text-align: center;
+  @media (min-width: 600px) {
+    width: 70%;
+    margin: 2rem;
+  }
+  @media (min-width: 768px) {
+    width: 300px;
+    margin: 2rem;
+  }
+  @media (min-width: 1024px) {
+    width: 350px;
+  }
+  @media (min-width: 1280px) {
+    width: 250px;
+  }
+  @media (min-width: 1440px) {
+    width: 300px;
+    margin: 2rem 1rem;
+  }
+  @media (min-width: 1500px) {
+    margin: 2rem;
+  }
+  @media (min-width: 1920px) {
+    width: 350px;
+  }
 `;
 
 const Item = styled(Description)`
-    text-align: left;
-    background-color: ${({theme}) => theme.colors.white};
-    box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    margin: 1rem 0;
+  text-align: left;
+  background-color: ${({theme}) => theme.colors.white};
+  box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0;
+  .image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 150px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    @media (min-width: 768px) {
+      height: 200px;
+    }
+    @media (min-width: 1280px) {
+      height: 150px;
+    }
+  }
+  .description {
+    height: 150px;
+    padding: 2rem 0;
     @media (min-width: 600px) {
-        margin: 0;
+        padding: 2rem;
     }
+    @media (min-width: 768px) {
+        height: 200px;
+    }
+    @media (min-width: 1280px) {
+        padding: 2rem 1rem;
+    }
+  }
+  .extra {
+    width: 100%;
+    height: 20px;
+    background-color: ${({theme}) => theme.colors.blue};
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    color: ${({theme}) => theme.colors.white};
+    font-family: 'Montserrat';
+    font-weight: 100;
+    ::after {
+      content: 'Szczegóły inwestycji';
+      opacity: 0;
+      transition: all .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+      font-size: .8rem;
+      @media (min-width: 600px) {
+        font-size: 1rem;
+      }
+    }
+  }
+  :hover {
     .image {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        width: 100%;
-        height: 150px;
-        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        @media (min-width: 600px) {
-            height: 200px;
-        }
-    }
-    .description {
-        height: 150px;
-        padding: 2rem 0;
-        @media (min-width: 600px) {
-            padding: 2rem;
-            height: 200px;
-        }
+      transform: scale(1.05);
     }
     .extra {
-        width: 100%;
-        height: 20px;
-        background-color: ${({theme}) => theme.colors.blue};
-        position: absolute;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        color: ${({theme}) => theme.colors.white};
-        font-family: 'Montserrat';
-        font-weight: 100;
-        ::after {
-            content: 'Szczegóły inwestycji';
-            opacity: 0;
-            transition: all .25s cubic-bezier(0.075, 0.82, 0.165, 1);
-            font-size: .8rem;
-            @media (min-width: 600px) {
-                font-size: 1rem;
-            }
-        }
+    height: 30px;
+    @media (min-width: 600px) {
+      height: 60px;
     }
-    :hover {
-        .image {
-            transform: scale(1.05);
-        }
-        .extra {
-        height: 30px;
-        @media (min-width: 600px) {
-            height: 60px;
-        }
-        ::after {
-            opacity: 1;
-        }
+    ::after {
+      opacity: 1;
     }
     }
+  }
 `;
 
 const Container = styled.div`
-    position: relative;
-    height: auto;
+  position: relative;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  @media (min-width: 1024px) {
+    padding: 2rem 0;
+  }
+  :before {
+    content: '';
+    position: absolute;
+    background-color: ${({theme}) => theme.colors.darkBlue};
     width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 1rem;
+    height: 100%;
+    left: 0;
+    z-index: -1;
     @media (min-width: 600px) {
-        height: 550px;
-        padding: 2rem 0;
+      width: 600px;
     }
-    :before {
-        content: '';
-        position: absolute;
-        background-color: ${({theme}) => theme.colors.darkBlue};
-        width: 100%;
-        height: 100%;
-        left: 0;
-        z-index: -1;
-        @media (min-width: 600px) {
-            width: 600px;
-        }
-    }
+  }
 `;
 
 const Icon = styled.div`
-    background-image: url(${sketchIcon});
-    background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
-    margin: 3rem auto 0;
-    @media (min-width: 600px) {
-        margin: 6rem auto 0;
-    }
+  background-image: url(${sketchIcon});
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+  margin: 3rem auto 0;
+  @media (min-width: 600px) {
+    margin: 6rem auto 0;
+  }
+  @media (min-width: 1280px) {
+    margin: 0 auto;
+  }
 `;
 
 const WideColumn = styled.div`
-    width: 100%;
-    margin-bottom: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
 `;
 
 const Portfolio = () => (
-    <>
-        <Wrapper>
-            <WideColumn>
-                <H3>Sprawdź</H3>
-                <H1>Wybrane Realizacje</H1> 
-            </WideColumn>
-        </Wrapper>
-        <Container>
-            <Description>
-                <Icon></Icon>
-                <Text isWhite>Sprawdź więcej</Text>
-                <Button isWhite>Projektów</Button>
-            </Description>
-            <Item>
-                <div className="image" 
-                    css={css`
-                        background-image: url(${ServicesImage});
-                `}></div>
-                <div className="description">
-                    <H2>Galeria Oława</H2>
-                    <Text isSmall>Nowe miejsce na mapie miasta</Text>   
-                </div>
-                <div className="extra"></div>
-            </Item>
-            <Item>
-                <div className="image" 
-                    css={css`
-                    background-image: url(${ServicesImage});
-                    `}></div>
-                <div className="description">
-                    <H2>Promenady</H2>
-                    <Text isSmall>Osiedle tętniące zyciem</Text>   
-                </div>
-                <div className="extra"></div>
-            </Item>
-            <Item>
-                <div className="image" 
-                    css={css`
-                    background-image: url(${ServicesImage});
-                    `}></div>
-                <div className="description">
-                    <H2>Zaklęte Rewiry</H2>
-                    <Text isSmall>Miejsce dla nocnych Marków</Text>   
-                </div>
-                <div className="extra"></div>
-            </Item>
-        </Container>
-    </>
+  <>
+    <Wrapper>
+      <WideColumn>
+        <H3>Sprawdź</H3>
+        <H1>Wybrane Realizacje</H1> 
+      </WideColumn>
+    </Wrapper>
+    <Container>
+      <Description>
+        <Icon></Icon>
+        <Text isWhite>Sprawdź więcej</Text>
+        <ButtonLink to="/realizacje" isWhite>Projektów</ButtonLink>
+      </Description>
+      <Item>
+        <div className="image" 
+          css={css`
+            background-image: url(${ServicesImage});
+        `}></div>
+        <div className="description">
+          <H2>Galeria Oława</H2>
+          <Text isSmall>Nowe miejsce na mapie miasta</Text>   
+        </div>
+        <div className="extra"></div>
+      </Item>
+      <Item>
+        <div className="image" 
+          css={css`
+          background-image: url(${ServicesImage});
+          `}></div>
+        <div className="description">
+          <H2>Promenady</H2>
+          <Text isSmall>Osiedle tętniące zyciem</Text>   
+        </div>
+        <div className="extra"></div>
+      </Item>
+      <Item>
+        <div className="image" 
+          css={css`
+          background-image: url(${ServicesImage});
+          `}></div>
+        <div className="description">
+          <H2>Zaklęte Rewiry</H2>
+          <Text isSmall>Miejsce dla nocnych Marków</Text>   
+        </div>
+        <div className="extra"></div>
+      </Item>
+    </Container>
+  </>
 )
 
 export default Portfolio
