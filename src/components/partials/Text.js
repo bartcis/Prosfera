@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Text = styled.p`
-    max-width: 500px;
+    max-width: ${(props) => props.isWide ? '100%' : '500px'};
     margin: ${(props) => props.isWhite ? '2rem auto' : ''};
     font-size: ${(props) => props.isSmall ? '.75rem' : '.9rem'};
     font-weight: 100;

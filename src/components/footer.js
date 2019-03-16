@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 
 import logo from '../images/prosfera_logo_white.svg';
 import Wrapper from '../components/partials/Wrapper';
@@ -80,58 +80,92 @@ const FooterText = styled(Text)`
 
   a {
     color: ${({theme}) => theme.colors.white};
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    text-decoration: none;
+    &:hover {
+      color: ${({theme}) => theme.colors.blue};
+    }
   }
 `;
 
 const FooterLink = styled(Link)`
   color: ${({theme}) => theme.colors.white};
+  transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  text-decoration: none;
+  font-weight: 100;
+  &:hover {
+    color: ${({theme}) => theme.colors.blue};
+  }
 `;
 
-const About = () => (
-  <Container>
-    <Wrapper>
-      <WideColumn>
-        <Logo></Logo>
-        <FooterText isWhite>Prosfera to firma budowlana specjalizująca się w 
-        wentylacjach i zabezpieczeniach p. pozarowych budynków mieszkalnych i 
-        komercyjnych
-        </FooterText>
-      </WideColumn>
-      <NarrowColumn>
-        <H4 isWhite>REALIZACJE</H4>
-        <FooterText isWhite>Promenady</FooterText>
-        <FooterText isWhite>ZITA</FooterText>
-        <FooterText isWhite>Galeria Oława</FooterText>
-      </NarrowColumn>
-      <NarrowColumn>
-        <H4 isWhite>DANE FIRMY</H4>
-        <FooterText isWhite>Prosfera</FooterText>
-        <FooterText isWhite>Kamil Kudyba</FooterText>
-        <FooterText isWhite>ul. Komedy 1/36</FooterText>
-        <FooterText isWhite>52-234 Wrocław</FooterText>
-        <FooterText isWhite>NIP: 921 187 37 64</FooterText>
-      </NarrowColumn>
-      <NarrowColumn>
-        <H4 isWhite>SZYBKI KONTAKT</H4>
-        <FooterText isWhite>Właścicel:</FooterText>
-        <FooterText isWhite>Kamil Kudyba</FooterText>
-        <FooterText isWhite>+48 792 187 247</FooterText>
-        <FooterText isWhite>kamil.kudyba@pro-sfera.pl</FooterText><br></br>
-        <FooterText isWhite>Kierownik Robót:</FooterText>
-        <FooterText isWhite>Łukasz Kudyba</FooterText>
-        <FooterText isWhite>+48 791 791 765</FooterText>
-        <FooterText isWhite>lukasz.kudyba@pro-sfera.pl</FooterText>
-      </NarrowColumn>
-      <FullColumn>
-        <FooterText isWhite>
-          <FooterLink to="/polityka-prywatnosci">Polityka Prywatności</FooterLink>
-        </FooterText>
-        <FooterText isWhite>ⓒ {(new Date().getFullYear())} Prosfera powered by 
-          <a rel="noopener noreferrer" href="https://bedekodzic.pl" target="_blank"> bedekodzic.pl</a>
-        </FooterText>
-      </FullColumn>
-    </Wrapper>
-  </Container> 
-)
+const Footer = () => (
+  <StaticQuery
+    query = {graphql`
+      query queryFooter{
+        allWordpressPost{
+          edges{
+            node{
+              id
+              title
+              slug
+            }
+          }
+        }
+      }
+    `}
+  
+  render = { data => (
+    <Container>
+      <Wrapper>
+        <WideColumn>
+          <Logo></Logo>
+          <FooterText isWhite>Prosfera to firma budowlana specjalizująca się w 
+          wentylacjach i zabezpieczeniach p. pozarowych budynków mieszkalnych i 
+          komercyjnych
+          </FooterText>
+        </WideColumn>
+        <NarrowColumn>
+          <H4 isWhite>REALIZACJE</H4>
+          {data.allWordpressPost.edges.map(({node}) => (
+            <div>
+              <FooterLink to={`/realizacje/${node.slug}`}>
+                {node.title}
+              </FooterLink>
+            </div>
+          ))}
+        </NarrowColumn>
+        <NarrowColumn>
+          <H4 isWhite>DANE FIRMY</H4>
+          <FooterText isWhite>Prosfera</FooterText>
+          <FooterText isWhite>Kamil Kudyba</FooterText>
+          <FooterText isWhite>ul. Komedy 1/36</FooterText>
+          <FooterText isWhite>52-234 Wrocław</FooterText>
+          <FooterText isWhite>NIP: 921 187 37 64</FooterText>
+        </NarrowColumn>
+        <NarrowColumn>
+          <H4 isWhite>SZYBKI KONTAKT</H4>
+          <FooterText isWhite>Właścicel:</FooterText>
+          <FooterText isWhite>Kamil Kudyba</FooterText>
+          <FooterText isWhite>+48 792 187 247</FooterText>
+          <FooterText isWhite>kamil.kudyba@pro-sfera.pl</FooterText><br></br>
+          <FooterText isWhite>Kierownik Robót:</FooterText>
+          <FooterText isWhite>Łukasz Kudyba</FooterText>
+          <FooterText isWhite>+48 791 791 765</FooterText>
+          <FooterText isWhite>lukasz.kudyba@pro-sfera.pl</FooterText>
+        </NarrowColumn>
+        <FullColumn>
+          <FooterText isWhite>
+            <FooterLink to="/polityka-prywatnosci">Polityka Prywatności</FooterLink>
+          </FooterText>
+          <FooterText isWhite>ⓒ {(new Date().getFullYear())} Prosfera powered by 
+            <a rel="noopener noreferrer" href="https://bedekodzic.pl" target="_blank"> bedekodzic.pl</a>
+          </FooterText>
+        </FullColumn>
+      </Wrapper>
+    </Container> 
+    )
+  }
+  />
+);
 
-export default About
+export default Footer;

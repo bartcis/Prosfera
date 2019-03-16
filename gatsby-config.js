@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/Prosfera`,
   siteMetadata: {
     title: `Prosfera`,
     description: `Private page of construction company`,
@@ -38,6 +39,14 @@ module.exports = {
         hostingWPCOM: false,
         useACF: true,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+          rule: {
+            include: /assets/
+          }
+      }
     },
     `gatsby-plugin-styled-components`,
   ],

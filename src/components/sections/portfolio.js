@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
 
 import Wrapper from '../partials/Wrapper';
@@ -10,12 +11,12 @@ import Text from '../partials/Text';
 import ButtonLink from '../partials/ButtonLink';
 
 import sketchIcon from '../../images/sketch.svg';
-import ServicesImage from '../../images/prosfera_services.jpg';
 
-const Description = styled.div`
+const Description = styled(Link)`
   height: auto;
   width: 100%;
   text-align: center;
+  text-decoration: none;
   @media (min-width: 600px) {
     width: 70%;
     margin: 2rem;
@@ -167,54 +168,66 @@ const WideColumn = styled.div`
 `;
 
 const Portfolio = () => (
-  <>
-    <Wrapper>
-      <WideColumn>
-        <H3>Sprawdź</H3>
-        <H1>Wybrane Realizacje</H1> 
-      </WideColumn>
-    </Wrapper>
-    <Container>
-      <Description>
-        <Icon></Icon>
-        <Text isWhite>Sprawdź więcej</Text>
-        <ButtonLink to="/realizacje" isWhite>Projektów</ButtonLink>
-      </Description>
-      <Item>
-        <div className="image" 
-          css={css`
-            background-image: url(${ServicesImage});
-        `}></div>
-        <div className="description">
-          <H2>Galeria Oława</H2>
-          <Text isSmall>Nowe miejsce na mapie miasta</Text>   
-        </div>
-        <div className="extra"></div>
-      </Item>
-      <Item>
-        <div className="image" 
-          css={css`
-          background-image: url(${ServicesImage});
-          `}></div>
-        <div className="description">
-          <H2>Promenady</H2>
-          <Text isSmall>Osiedle tętniące zyciem</Text>   
-        </div>
-        <div className="extra"></div>
-      </Item>
-      <Item>
-        <div className="image" 
-          css={css`
-          background-image: url(${ServicesImage});
-          `}></div>
-        <div className="description">
-          <H2>Zaklęte Rewiry</H2>
-          <Text isSmall>Miejsce dla nocnych Marków</Text>   
-        </div>
-        <div className="extra"></div>
-      </Item>
-    </Container>
-  </>
-)
+  <StaticQuery
+    query = {graphql`
+      query queryAll{
+        allWordpressPost(limit: 3){
+          totalCount
+          edges{
+            node{
+              id
+              title
+              slug
+              featured_media{
+                localFile{
+                  childImageSharp{
+                    fluid(maxWidth: 350) {
+                      src
+                    }
+                  }
+                }
+              }
+              acf{
+                krotki_opis
+              }
+            }
+          }
+        }
+      }
+    `}
+  
+  render = { data => (
+    <>
+      <Wrapper>
+        <WideColumn>
+          <H3>Sprawdź</H3>
+          <H1>Wybrane Realizacje</H1> 
+        </WideColumn>
+      </Wrapper>
+      <Container>
+        <Description>
+          <Icon></Icon>
+          <Text isWhite>Sprawdź więcej</Text>
+          <ButtonLink to="/realizacje" isWhite>Projektów</ButtonLink>
+        </Description>
+        {data.allWordpressPost.edges.map(({node}) => (
+          <Item to={`/realizacje/${node.slug}`}>
+            <div className="image" 
+              css={css`
+                background-image: url(${node.featured_media.localFile.childImageSharp.fluid.src});
+            `}></div>
+            <div className="description">
+              <H2>{node.title}</H2>
+              <Text isSmall>{node.acf.krotki_opis}</Text>   
+            </div>
+            <div className="extra"></div>
+          </Item>
+        ))}
+      </Container>
+    </>
+    )
+  }
+  />
+);
 
-export default Portfolio
+export default Portfolio;

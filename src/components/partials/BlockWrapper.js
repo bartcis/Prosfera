@@ -9,10 +9,9 @@ const BlockWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     padding: 0 1rem;
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
         margin: 200px auto 100px;
         padding: 0 2rem;
-
     }
 `;
 

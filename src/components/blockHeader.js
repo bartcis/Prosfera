@@ -9,7 +9,7 @@ import { scrollTo as scrollToAction } from '../state/app';
 import logo from '../images/prosfera_logo_white.svg';
 import email from '../images/prosfera_head_email.svg';
 import phone from '../images/prosfera_head_phone.svg';
-import MobileMenu from '../components/partials/MobileMenu';
+import MobileMenu from '../components/partials/mobileMenu';
 
 const StyledWrapper = styled.header`
   background: ${({theme}) => theme.colors.darkBlue};;

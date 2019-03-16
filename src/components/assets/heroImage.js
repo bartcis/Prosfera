@@ -45,7 +45,7 @@ const StyledHero = ({scrollTo}) => (
             padding: 125px 10px 50px;
             box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
             @media (min-width: 414px) {
-              padding: 150px 20px 50px;
+              padding: 200px 20px 50px;
             }
             @media (min-width: 768px) {
               height: 600px;
@@ -57,8 +57,8 @@ const StyledHero = ({scrollTo}) => (
           `}
         >
           <Cover></Cover>
-          <H1 isWhite css={css`
-            max-width: 600px;
+          <H1 isWhite isHero css={css`
+            max-width: 650px;
             margin: auto;
           `}>Wentylacje i Instalacje p. Pożarowe</H1>
           <Text isWhite>

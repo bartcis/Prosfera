@@ -1,51 +1,79 @@
-const _ = require(`lodash`)
-const Promise = require(`bluebird`)
-const path = require(`path`)
-const slash = require(`slash`)
+const _ = require(`lodash`);
+const Promise = require(`bluebird`);
+const path = require(`path`);
+const slash = require(`slash`);
+const createPaginatedPages = require('gatsby-paginate');
 
-// Will create pages for Wordpress pages (route : /{slug})
-// Will create pages for Wordpress posts (route : /post/{slug})
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  return new Promise((resolve, reject) => {
-
-    // ==== PAGES (WORDPRESS NATIVE) ====
-    graphql(
-      `
-        {
-          allWordpressPage {
-            edges {
-              node {
-                id
-                slug
-                status
-                template
+const queryAll = `
+{
+  allWordpressPage {
+    edges {
+      node {
+        id
+        slug
+        status
+        template
+      }
+    }
+  }
+  
+  allWordpressPost {
+    edges {
+      node {
+        id  
+        slug
+        status
+        template
+        format
+        title
+        date
+        featured_media{
+          localFile{
+            childImageSharp{
+              fluid(maxWidth: 1920) {
+                src
               }
             }
           }
         }
-      `
-    )
-      .then(result => {
+        acf{
+          krotki_opis
+          dlugi_opis
+          miejsce_projektu
+          rok_realizacji
+          typ_budynku
+          przeznaczenie_budynku
+          dlugosc_instalacji
+          foto_1_opis
+          foto_1 
+          foto_2_opis
+          foto_2 
+          foto_3_opis
+          foto_3 
+          foto_4_opis
+          foto_4 
+        }
+      }
+    }
+  }
+}
+`
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  return new Promise((resolve, reject) => {
+
+    resolve(
+      graphql(queryAll).then(result => {
         if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
+          reject(result.errors);
         }
 
-        // Create Page pages.
-        const pageTemplate = path.resolve(`./src/templates/page.js`)
-        // We want to create a detailed page for each
-        // page node. We'll just use the Wordpress Slug for the slug.
-        // The Page ID is prefixed with 'PAGE_'
+        const postTemplate = path.resolve(`./src/templates/post.js`);
+        const pageTemplate = path.resolve(`./src/templates/page.js`);
+
         _.each(result.data.allWordpressPage.edges, edge => {
-          // Gatsby uses Redux to manage its internal state.
-          // Plugins and sites can use functions like "createPage"
-          // to interact with Gatsby.
           createPage({
-            // Each page is required to have a `path` as well
-            // as a template component. The `context` is
-            // optional but is often necessary so the template
-            // can query data specific to each page.
             path: `/${edge.node.slug}/`,
             component: slash(pageTemplate),
             context: {
@@ -53,48 +81,25 @@ exports.createPages = ({ graphql, actions }) => {
             },
           })
         })
-      })
-      // ==== END PAGES ====
 
-      // ==== POSTS (WORDPRESS NATIVE AND ACF) ====
-      .then(() => {
-        graphql(
-          `
-            {
-              allWordpressPost {
-                edges {
-                  node {
-                    id
-                    slug
-                    status
-                    template
-                    format
-                  }
-                }
-              }
-            }
-          `
-        ).then(result => {
-          if (result.errors) {
-            console.log(result.errors)
-            reject(result.errors)
-          }
-          const postTemplate = path.resolve(`./src/templates/post.js`)
-          // We want to create a detailed page for each
-          // post node. We'll just use the Wordpress Slug for the slug.
-          // The Post ID is prefixed with 'POST_'
-          _.each(result.data.allWordpressPost.edges, edge => {
-            createPage({
-              path: edge.node.slug,
-              component: slash(postTemplate),
-              context: {
-                id: edge.node.id,
-              },
-            })
-          })
-          resolve()
+        // createPaginatedPages({
+        //   edges: posts,
+        //   createPage: createPage,
+        //   pageTemplate: 'src/templates/post.js',
+        //   pageLength: 8,
+        //   pathPrefix: 'posts'
+        // })
+
+        _.each(result.data.allWordpressPost.edges, edge => {
+          createPage({
+            path: `/realizacje/${edge.node.slug}/`,
+            component: slash(postTemplate),
+            context: {
+              id: edge.node.id,
+            },
+          });
         })
       })
-    // ==== END POSTS ====
-  })
-}
+    )
+  });
+};
