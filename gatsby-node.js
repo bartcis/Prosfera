@@ -63,16 +63,18 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
 
+    const postTemplate = path.resolve('./src/templates/post.js');
+    const pageTemplate = path.resolve('./src/templates/page.js');
+
     resolve(
       graphql(queryAll).then(result => {
         if (result.errors) {
           reject(result.errors);
         }
 
-        const postTemplate = path.resolve(`./src/templates/post.js`);
-        const pageTemplate = path.resolve(`./src/templates/page.js`);
+        const pages = result.data.allWordpressPage.edges
 
-        _.each(result.data.allWordpressPage.edges, edge => {
+        pages.forEach( edge => {
           createPage({
             path: `/${edge.node.slug}/`,
             component: slash(pageTemplate),
@@ -90,14 +92,16 @@ exports.createPages = ({ graphql, actions }) => {
         //   pathPrefix: 'posts'
         // })
 
-        _.each(result.data.allWordpressPost.edges, edge => {
+        const posts = result.data.allWordpressPost.edges
+
+        posts.forEach( edge => {
           createPage({
             path: `/realizacje/${edge.node.slug}/`,
             component: slash(postTemplate),
             context: {
               id: edge.node.id,
             },
-          });
+          })
         })
       })
     )

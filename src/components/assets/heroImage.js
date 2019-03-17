@@ -32,10 +32,23 @@ const StyledHero = ({scrollTo}) => (
             }
           }
         }
+        allWordpressPage {
+          edges {
+            node {
+              title
+              acf{
+                tytul_glowny
+                tekst_pod_tytulem
+              }
+            }
+          }
+        }
       }
     `}
     render = {(data) => {
       const imageData = data.desktop.childImageSharp.fluid
+      const pageData = data.allWordpressPage.edges[1].node.acf;
+
       return (
         <BackgroundImage fluid={imageData}
           css={css`
@@ -60,10 +73,8 @@ const StyledHero = ({scrollTo}) => (
           <H1 isWhite isHero css={css`
             max-width: 650px;
             margin: auto;
-          `}>Wentylacje i Instalacje p. Pożarowe</H1>
-          <Text isWhite>
-            Ponad 10 lat dbamy o Twoje powietrze. Budujemy instalacje dostosowane do Twoich potrzeb.
-          </Text>
+          `} dangerouslySetInnerHTML={{__html: pageData.tytul_glowny}}/>
+          <Text isWhite dangerouslySetInnerHTML={{__html: pageData.tekst_pod_tytulem}}/>
           <Button isWhite onClick={() => scrollTo('contact-form')}>Kontakt</Button>
         </BackgroundImage>
       )

@@ -3,7 +3,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 
 import { theme } from '../components/utils/theme';
 import SEO from '../components/seo';

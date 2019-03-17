@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 import { css } from '@emotion/core';
+import { graphql } from 'gatsby';
 
 import { theme } from '../components/utils/theme';
 import SEO from '../components/seo';

@@ -93,16 +93,16 @@ class PageTemplate extends Component {
 export default PageTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query currentPageQuery($id: String!) {
     wordpressPage(id: { eq: $id }) {
-        title
-        content
+      title
+      content
     }
     site {
       id
       siteMetadata {
-            title
-        }
+        title
+      }
     }
   }
 `

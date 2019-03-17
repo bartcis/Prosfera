@@ -111,6 +111,16 @@ const Footer = () => (
             }
           }
         }
+        allWordpressPage {
+          edges {
+            node {
+              title
+              acf{
+                tekst_na_samym_dole
+              }
+            }
+          }
+        }
       }
     `}
   
@@ -119,9 +129,7 @@ const Footer = () => (
       <Wrapper>
         <WideColumn>
           <Logo></Logo>
-          <FooterText isWhite>Prosfera to firma budowlana specjalizująca się w 
-          wentylacjach i zabezpieczeniach p. pozarowych budynków mieszkalnych i 
-          komercyjnych
+          <FooterText isWhite>{data.allWordpressPage.edges[1].node.acf.tekst_na_samym_dole}
           </FooterText>
         </WideColumn>
         <NarrowColumn>
