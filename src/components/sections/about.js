@@ -101,12 +101,12 @@ const About = () => (
           <H1>O nas</H1> 
         </WideColumn>
         <Column>
-        <Text>{data.allWordpressPage.edges[1].node.acf.o_fimie}</Text>
+        <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie}</Text>
         </Column>
         <Column>
            <AboutImage css={css`
             background-image: 
-            url(${data.allWordpressPage.edges[1].node.acf.prezes_foto.localFile.childImageSharp.fluid.src});
+            url(${data.allWordpressPage.edges[2].node.acf.prezes_foto.localFile.childImageSharp.fluid.src});
           `}></AboutImage>
           <Text isSmall>Kamil Kudyba. Właściciel Prosfery.</Text>
         </Column>
@@ -117,20 +117,20 @@ const About = () => (
           <H1>Referencje</H1> 
         </WideColumn>
         <NarrowColumn>
-          <Text isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_1}</Text>
-          <H2 isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_1_autor}</H2>
+          <Text isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_1}</Text>
+          <H2 isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_1_autor}</H2>
         </NarrowColumn>
         <NarrowColumn>
-          <Text isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_2}</Text>
-          <H2 isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_2_autor}</H2>
+          <Text isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_2}</Text>
+          <H2 isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_2_autor}</H2>
         </NarrowColumn>
         <NarrowColumn>
-          <Text isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_3}</Text>
-          <H2 isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_3_autor}</H2>
+          <Text isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_3}</Text>
+          <H2 isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_3_autor}</H2>
         </NarrowColumn>
         <NarrowColumn>
-          <Text isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_4}</Text>
-          <H2 isSmall>{data.allWordpressPage.edges[1].node.acf.referencja_4_autor}</H2>
+          <Text isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_4}</Text>
+          <H2 isSmall>{data.allWordpressPage.edges[2].node.acf.referencja_4_autor}</H2>
         </NarrowColumn>
       </Wrapper>
     </Container>

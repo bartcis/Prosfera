@@ -34,8 +34,8 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `prosfera.local`,
-        protocol: `http`,
+        baseUrl: `admin.pro-sfera.pl`,
+        protocol: `https`,
         hostingWPCOM: false,
         useACF: true,
       },
@@ -49,5 +49,13 @@ module.exports = {
       }
     },
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-recaptcha`,
+      options: {
+         async: true,
+         defer: false,
+         args: `?onload=onloadCallback&render=6LcvhpkUAAAAADUTMhS6b9hozsWzMZJS-3I7_cfe`,
+      },
+   },
   ],
 }

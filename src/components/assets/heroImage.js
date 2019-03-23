@@ -47,7 +47,7 @@ const StyledHero = ({scrollTo}) => (
     `}
     render = {(data) => {
       const imageData = data.desktop.childImageSharp.fluid
-      const pageData = data.allWordpressPage.edges[1].node.acf;
+      const pageData = data.allWordpressPage.edges[2].node.acf;
 
       return (
         <BackgroundImage fluid={imageData}

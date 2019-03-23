@@ -129,7 +129,7 @@ const Footer = () => (
       <Wrapper>
         <WideColumn>
           <Logo></Logo>
-          <FooterText isWhite>{data.allWordpressPage.edges[1].node.acf.tekst_na_samym_dole}
+          <FooterText isWhite>{data.allWordpressPage.edges[2].node.acf.tekst_na_samym_dole}
           </FooterText>
         </WideColumn>
         <NarrowColumn>

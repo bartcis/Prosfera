@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const Button = styled.div`
+const Button = styled.button`
   margin: auto;
   width: 150px;
+  background-color: transparent;
   border: 1px solid ${(props) => props.isWhite ?
     ({theme}) => theme.colors.white :
     ({theme}) => theme.colors.darkBlue};
@@ -11,6 +12,7 @@ const Button = styled.div`
   cursor: pointer;
   margin-top: 2rem;
   font-weight: 100;
+  font-size: 1rem;
   position: relative;
   transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
   color: ${(props) => props.isWhite ?

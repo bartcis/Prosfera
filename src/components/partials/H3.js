@@ -7,6 +7,9 @@ const H3 = styled.h3`
     color: ${(props) => props.isWhite ?
         ({theme}) => theme.colors.white :
         ({theme}) => theme.colors.blue};
+    color: ${(props) => props.isRed ?
+    ({theme}) => theme.colors.red :
+    ({theme}) => theme.colors.blue};
     font-weight: 100;
     margin: 0;
     padding: 0 1rem;
