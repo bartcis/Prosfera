@@ -56,6 +56,7 @@ const AboutImage = styled.div`
   width: 100%;
   height: 100%;
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
+  min-height: 250px;
 `;
 
 const About = () => (
@@ -68,6 +69,8 @@ const About = () => (
             title
             acf{
               o_fimie
+              o_fimie_2
+              o_fimie_3
               prezes_foto {          
                 localFile {
                   childImageSharp {
@@ -101,7 +104,9 @@ const About = () => (
           <H1>O nas</H1> 
         </WideColumn>
         <Column>
-        <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie}</Text>
+          <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie}</Text>
+          <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie_2}</Text>
+          <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie_3}</Text>
         </Column>
         <Column>
            <AboutImage css={css`

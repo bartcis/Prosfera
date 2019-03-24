@@ -53,11 +53,14 @@ const Menu = styled(PosedMenu)`
   height: auto;
   background-color: rgba(255, 255, 255, .9);
   position: absolute;
-  top: 100px;
+  top: 110px;
   padding: 2rem;
   width: 100vw;
   left: 0;
   transition: all .25s cubic-bezier(0.47, 0, 0.75, 0.72);
+  @media (min-width: 360px) {
+    top: 100px;
+  }
 `;
 
 const MobileLink = styled(Link)`

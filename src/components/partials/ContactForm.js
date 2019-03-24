@@ -45,12 +45,17 @@ const Textarea = styled.textarea`
 `;
 
 class ContactForm extends Component {
-  state = {
-    name: '',
-    email: '',
-    title: '',
-    message: '',
-    errorMessage : ''
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      email: '',
+      title: '',
+      message: '',
+      errorMessage : ''
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange = event => {
@@ -70,8 +75,8 @@ class ContactForm extends Component {
     })
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
+  handleSubmit(event) {
+    event.preventDefault();
 
     if (!this.state.name ||
       !this.state.email ||
@@ -84,9 +89,29 @@ class ContactForm extends Component {
       this.setState({
         errorMessage: ''
       });
-
-      alert(`Welcome ${this.state.name} ${this.state.name}!`);
+      this.sendForm();
     }
+  }
+
+  async sendForm () {
+    const body = JSON.stringify({
+      name: this.state.name,
+      email: this.state.email,
+      title: this.state.title,
+      message: this.state.message
+    });
+
+    const request = await fetch('http://localhost:4000/form', {
+      method: 'post',
+      body,
+      headers: {
+        'content-type': 'application/json',
+      }
+    })
+    .catch(error => console.log(Error(error)));
+
+    const response = await request.json();
+    console.log(response);
   }
 
   render() {
