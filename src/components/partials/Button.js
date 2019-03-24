@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   margin: auto;
-  width: 150px;
+  width: 200px;
   background-color: transparent;
   border: 1px solid ${(props) => props.isWhite ?
     ({theme}) => theme.colors.white :

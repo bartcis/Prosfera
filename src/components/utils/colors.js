@@ -1,5 +1,5 @@
 export const colors = {
-    darkBlueOpacity: 'rgba(9, 29, 43, .9)',
+    darkBlueOpacity: 'rgba(9, 29, 43, .7)',
     darkBlue: '#113955',
     white: '#fff',
     blue: '#2880be',
