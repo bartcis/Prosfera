@@ -4,9 +4,9 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
 
 import Wrapper from '../partials/wrapper';
-import H1 from '../partials/h1';
-import H2 from '../partials/h2';
-import H3 from '../partials/h3';
+import H1 from '../partials/h-one';
+import H2 from '../partials/h-two';
+import H3 from '../partials/h-three';
 import Text from '../partials/text';
 import ButtonLink from '../partials/button-link';
 

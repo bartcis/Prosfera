@@ -8,7 +8,7 @@ import { theme } from '../components/utils/theme';
 import SEO from '../components/seo';
 import BlockHeader from '../components/block-header';
 import Footer from '../components/footer';
-import H1 from '../components/partials/h1';
+import H1 from '../components/partials/h-one';
 import Text from '../components/partials/text';
 import Wrapper from '../components/partials/wrapper';
 

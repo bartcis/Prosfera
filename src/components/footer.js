@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 
 import logo from '../images/prosfera_logo_white.svg';
 import Wrapper from './partials/wrapper';
-import H4 from './partials/h4';
+import H4 from './partials/h-four';
 import Text from './partials/text';
 
 const Logo = styled.div`

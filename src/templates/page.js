@@ -10,7 +10,7 @@ import BlockHeader from '../components/block-header';
 import Footer from '../components/footer';
 
 import BlockWrapper from '../components/partials/block-wrapper';
-import H1 from '../components/partials/h1';
+import H1 from '../components/partials/h-one';
 
 const GlobalStyle = createGlobalStyle`
   body {

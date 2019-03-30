@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled, {keyframes} from 'styled-components';
 
-import H3 from './h3';
+import H3 from './h-three';
 import Button from './button';
 import spinner from '../../images/prosfera_logo_favi.svg';
 

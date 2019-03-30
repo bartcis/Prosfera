@@ -7,8 +7,8 @@ import SEO from '../components/seo';
 import BlockHeader from '../components/block-header';
 import Footer from '../components/footer';
 import BlockWrapper from '../components/partials/block-wrapper';
-import H1 from '../components/partials/h1';
-import H3 from '../components/partials/h3';
+import H1 from '../components/partials/h-one';
+import H3 from '../components/partials/h-three';
 
 const GlobalStyle = createGlobalStyle`
   body {

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 
 import Wrapper from '../partials/wrapper';
-import H1 from '../partials/h1';
-import H3 from '../partials/h3';
+import H1 from '../partials/h-one';
+import H3 from '../partials/h-three';
 import ContactForm from '../partials/contact-form';
 
 const WideColumn = styled.div`

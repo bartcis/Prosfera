@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 
 import { scrollTo as scrollToAction } from '../../state/app';
 
-import H1 from '../partials/H1';
-import Button from '../partials/Button';
-import Text from '../partials/Text';
+import H1 from '../partials/h-one';
+import Button from '../partials/button';
+import Text from '../partials/text';
 
 const Cover = styled.div`
   position: absolute;

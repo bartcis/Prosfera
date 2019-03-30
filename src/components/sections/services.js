@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Wrapper from '../partials/wrapper';
-import H1 from '../partials/h1';
-import H3 from '../partials/h3';
+import H1 from '../partials/h-one';
+import H3 from '../partials/h-three';
 import Text from '../partials/text';
 import ServicesImage from '../assets/services';
 
