@@ -6,11 +6,11 @@ import { graphql } from 'gatsby';
 
 import { theme } from '../components/utils/theme';
 import SEO from '../components/seo';
-import BlockHeader from '../components/blockHeader';
+import BlockHeader from '../components/block-header';
 import Footer from '../components/footer';
-import H1 from '../components/partials/H1';
-import Text from '../components/partials/Text';
-import Wrapper from '../components/partials/Wrapper';
+import H1 from '../components/partials/h1';
+import Text from '../components/partials/text';
+import Wrapper from '../components/partials/wrapper';
 
 
 const GlobalStyle = createGlobalStyle`

@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Wrapper from '../partials/Wrapper';
-import H1 from '../partials/H1';
-import H3 from '../partials/H3';
-import Text from '../partials/Text';
+import Wrapper from '../partials/wrapper';
+import H1 from '../partials/h1';
+import H3 from '../partials/h3';
+import Text from '../partials/text';
 import ServicesImage from '../assets/services';
 
 const Column = styled.div`

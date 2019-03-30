@@ -4,9 +4,9 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
 
 import logo from '../images/prosfera_logo_white.svg';
-import Wrapper from '../components/partials/Wrapper';
-import H4 from '../components/partials/H4';
-import Text from '../components/partials/Text';
+import Wrapper from './partials/wrapper';
+import H4 from './partials/h4';
+import Text from './partials/text';
 
 const Logo = styled.div`
   width: 150px;

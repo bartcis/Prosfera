@@ -9,7 +9,7 @@ import Portfolio from './sections/portfolio';
 import About from './sections/about';
 import Sky from './sections/sky';
 import Contact from './sections/contact';
-import Cookies from './partials/Cookies';
+import Cookies from './partials/cookies';
 
 const mapStateToProps = (state) => ({ 
   scrollState: state.app.scrollState,

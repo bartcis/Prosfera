@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
-import Wrapper from '../partials/Wrapper';
-import H1 from '../partials/H1';
-import H3 from '../partials/H3';
-import ContactForm from '../partials/ContactForm';
+import Wrapper from '../partials/wrapper';
+import H1 from '../partials/h1';
+import H3 from '../partials/h3';
+import ContactForm from '../partials/contact-form';
 
 const WideColumn = styled.div`
     width: 100%;

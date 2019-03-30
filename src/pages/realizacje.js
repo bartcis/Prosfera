@@ -7,13 +7,13 @@ import { Link, graphql } from 'gatsby';
 
 import { theme } from '../components/utils/theme';
 import SEO from '../components/seo';
-import BlockHeader from '../components/blockHeader';
+import BlockHeader from '../components/block-header';
 import Footer from '../components/footer';
 import BlockWrapper from '../components/partials/block-wrapper';
 import Wrapper from '../components/partials/wrapper';
-import H1 from '../components/partials/H1';
-import H3 from '../components/partials/H3';
-import Text from '../components/partials/Text';
+import H1 from '../components/partials/h1';
+import H3 from '../components/partials/h3';
+import Text from '../components/partials/text';
 
 const GlobalStyle = createGlobalStyle`
   body {

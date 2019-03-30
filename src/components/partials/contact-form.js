@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import styled, {keyframes} from 'styled-components';
 
-import H3 from '../partials/H3';
-import Button from '../partials/Button';
+import H3 from './h3';
+import Button from './button';
 import spinner from '../../images/prosfera_logo_favi.svg';
 
 const Form = styled.form`

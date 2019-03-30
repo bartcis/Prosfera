@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 import { theme } from '../components/utils/theme';
 import SEO from '../components/seo';
-import BlockHeader from '../components/blockHeader';
+import BlockHeader from '../components/block-header';
 import Footer from '../components/footer';
 import BlockWrapper from '../components/partials/block-wrapper';
-import H1 from '../components/partials/H1';
-import H3 from '../components/partials/H3';
+import H1 from '../components/partials/h1';
+import H3 from '../components/partials/h3';
 
 const GlobalStyle = createGlobalStyle`
   body {

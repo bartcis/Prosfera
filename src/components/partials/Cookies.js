@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components';
 import posed from 'react-pose';
 
-import Text from './Text';
-import Button from './Button';
+import Text from './text';
+import Button from './button';
 
 const PosedContainer = posed.div({
   visible: {
