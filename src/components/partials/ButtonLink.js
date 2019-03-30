@@ -3,7 +3,8 @@ import { Link } from 'gatsby';
 
 const ButtonLink = styled(Link)`
   margin: auto;
-  width: 150px;
+  width: 200px;
+  text-align: center;
   border: 1px solid ${(props) => props.isWhite ?
     ({theme}) => theme.colors.white :
     ({theme}) => theme.colors.darkBlue};

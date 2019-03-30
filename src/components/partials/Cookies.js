@@ -27,9 +27,6 @@ const Container = styled(PosedContainer)`
   z-index: 100;
   font-family: 'Montserrat';
   flex-wrap: wrap;
-  @media (min-width: 600px) {
-    padding: 2rem 4rem;
-  }
 `;
 
 const CookieLink = styled(Link)`
@@ -90,7 +87,7 @@ class Cookies extends Component {
   render() {
     return (
       <Container pose={this.state.showCookies ? 'visible' : 'hidden'} >
-        <Text isWhite isWide>Ta strona korzysta z plików cookies. Używanie serwisu oznacza zgodę na ich użycie. Aby poznać więcej szczegółów sprawdź 
+        <Text isWhite isWide isSmall>Ta strona korzysta z plików cookies. Używanie serwisu oznacza zgodę na ich użycie. Aby poznać więcej szczegółów sprawdź 
           <CookieLink to="polityka-prywatnosci">Politykę Prywatności</CookieLink>.
         </Text>
         <CookieButton isWhite onClick={this.hideMessage}>Zgadzam się.</CookieButton>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import { css } from '@emotion/core';
 
 import logo from '../images/prosfera_logo_white.svg';
 import Wrapper from '../components/partials/Wrapper';
@@ -135,7 +136,12 @@ const Footer = () => (
         <NarrowColumn>
           <H4 isWhite>REALIZACJE</H4>
           {data.allWordpressPost.edges.map(({node}) => (
-            <div>
+            <div css={`
+                padding-left: 1rem;
+                @media (min-width: 768px) {
+                  padding-left: 0;
+                }
+              `}>
               <FooterLink to={`/realizacje/${node.slug}`}>
                 {node.title}
               </FooterLink>

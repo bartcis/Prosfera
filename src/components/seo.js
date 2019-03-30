@@ -16,7 +16,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               lang,
             }}
             title={title}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            titleTemplate={`${data.site.siteMetadata.title}`}
             meta={[
               {
                 name: `description`,
@@ -68,9 +68,9 @@ function SEO({ description, lang, meta, keywords, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  keywords: [],
+  lang: `pl`,
+  meta: ['Wrocławska firma zajmująca się wentylacjami, rekuperacją i zabezpieczeniami przeciw pożarowymi. Sprawdź naszą ofertę.'],
+  keywords: ['wentylacje', 'wroclaw', 'rekuperacja', 'przeciw pozarowe'],
 }
 
 SEO.propTypes = {

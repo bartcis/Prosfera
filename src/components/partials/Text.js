@@ -4,7 +4,7 @@ const Text = styled.p`
     max-width: ${(props) => props.isWide ? '100%' : '500px'};
     margin: ${(props) => props.isWhite ? '2rem auto' : ''};
     font-size: ${(props) => props.isSmall ? '.75rem' : '.9rem'};
-    font-weight: 100;
+    font-weight: 200;
     font-family: 'Montserrat';
     color: ${(props) => props.isWhite ?
         ({theme}) => theme.colors.white :

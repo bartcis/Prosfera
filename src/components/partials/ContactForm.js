@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 import H3 from '../partials/H3';
 import Button from '../partials/Button';
-
+import spinner from '../../images/prosfera_logo_favi.svg';
 
 const Form = styled.form`
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
@@ -14,6 +14,7 @@ const Form = styled.form`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
 `;
 
 const Input = styled.input`
@@ -44,6 +45,40 @@ const Textarea = styled.textarea`
   }
 `;
 
+const Opacity = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .9);
+  top: 0;
+  left: 0;
+  z-index: 101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  p {
+    width: 100%;
+    line-height: 1.5;
+    font-size: 1.25rem;
+    font-family: 'Montserrat';
+  }
+`;
+
+const rotate = keyframes`
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+`
+
+const Spinner = styled.div`
+  background-image: url(${spinner});
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  animation: ${rotate} 2s infinite;
+`;
+
 class ContactForm extends Component {
   constructor() {
     super();
@@ -52,10 +87,15 @@ class ContactForm extends Component {
       email: '',
       title: '',
       message: '',
-      errorMessage : ''
+      errorMessage : '',
+      loader: false,
+      success: false,
+      failed: false,
     };
-
+    
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
   handleInputChange = event => {
@@ -94,6 +134,10 @@ class ContactForm extends Component {
   }
 
   async sendForm () {
+    this.setState(prevState => ({
+      loader: !prevState.loader,
+    }));
+
     const body = JSON.stringify({
       name: this.state.name,
       email: this.state.email,
@@ -111,12 +155,79 @@ class ContactForm extends Component {
     .catch(error => console.log(Error(error)));
 
     const response = await request.json();
-    console.log(response);
+
+    if (response.status === '200') {
+      this.setState(prevState => ({
+        loader: !prevState.loader,
+        success: !prevState.success,
+      }));
+    } else {
+      this.setState(prevState => ({
+        loader: !prevState.loader,
+        failed: !prevState.failed,
+      }));
+    }
+  }
+
+  resetForm () {
+    this.setState({
+      name: '',
+      email: '',
+      title: '',
+      message: '',
+      errorMessage : '',
+      loader: false,
+      success: false,
+      failed: false,
+    });
+  }
+
+  resetState () {
+    this.setState({
+      errorMessage : '',
+      loader: false,
+      success: false,
+      failed: false,
+    });
   }
 
   render() {
+
+    const spinner = (
+      <Opacity>
+        <Spinner></Spinner>
+      </Opacity>
+    );
+
+    const success = (
+      <Opacity>
+        <div>
+          <p>Dziękujemy! <br/>
+            Twoja wiadomość została wysłana. <br/>
+            Odezwiemy się do Ciebie jak najszybciej.
+          </p>
+          <Button onClick={this.resetForm}>Ok</Button>
+        </div>
+      </Opacity>
+    );
+
+    const failure = (
+      <Opacity>
+        <div>
+          <p>Przepraszamy... <br/>
+            Coś poszło nie tak <br/>
+            Spróbuj proszę za parę chwil.
+          </p>
+          <Button onClick={this.resetState}>Ok</Button>
+        </div>
+      </Opacity>
+    );
+
     return (
       <Form onSubmit={this.handleSubmit}>
+        {this.state.loader ? spinner : ''}
+        {this.state.success ? success : ''}
+        {this.state.failed ? failure : ''}
         <H3>Imię i Nazwisko *</H3>
         <Input
           type='text'

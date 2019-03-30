@@ -1,12 +1,16 @@
 module.exports = {
   pathPrefix: `/Prosfera`,
   siteMetadata: {
-    title: `Prosfera`,
-    description: `Private page of construction company`,
+    title: `Prosfera - Instalacje sanitarne i zabezpieczenia p.pożarowe`,
+    description: `Wrocławska firma zajmująca się wentylacjami, rekuperacją i zabezpieczeniami przeciw pożarowymi. 
+    Sprawdź naszą ofertę.`,
     author: `@bartekCis`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -14,8 +18,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -25,7 +27,7 @@ module.exports = {
         background_color: `#2880be`,
         theme_color: `#2880be`,
         display: `standalone`,
-        icon: `./src/images/prosfera_logo_black.svg`,
+        icon: `./src/images/prosfera_logo_favi-min.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -48,7 +50,6 @@ module.exports = {
           }
       }
     },
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-recaptcha`,
       options: {
@@ -57,5 +58,23 @@ module.exports = {
          args: `?onload=onloadCallback&render=6LcvhpkUAAAAADUTMhS6b9hozsWzMZJS-3I7_cfe`,
       },
    },
+   {
+     resolve: `gatsby-plugin-favicon`,
+     options: {
+       logo: './src/images/prosfera_logo_favi-min.png',
+       icons: {
+         android: true,
+         appleIcon: true,
+         appleStartup: true,
+         coast: false,
+         favicons: true,
+         firefox: true,
+         opengraph: false,
+         twitter: false,
+         yandex: false,
+         windows: false
+       }
+     }
+   }
   ],
 }
