@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import { css } from '@emotion/core';
 
 import Wrapper from '../partials/wrapper';
 import H1 from '../partials/h-one';
@@ -212,10 +211,7 @@ const Portfolio = () => (
         </Description>
         {data.allWordpressPost.edges.map(({node}) => (
           <Item to={`/realizacje/${node.slug}`}>
-            <div className="image" 
-              css={css`
-                background-image: url(${node.featured_media.localFile.childImageSharp.fluid.src});
-            `}></div>
+            <div className="image" style={{ backgroundImage: `url(${node.featured_media.localFile.childImageSharp.fluid.src})` }}></div>
             <div className="description">
               <H2>{node.title}</H2>
               <Text isSmall>{node.acf.krotki_opis}</Text>   
