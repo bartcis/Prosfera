@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Wrapper from '../partials/wrapper';
 import H1 from '../partials/h-one';
 import H3 from '../partials/h-three';
 import ServicesImage from '../assets/services';
@@ -13,6 +12,23 @@ const Column = styled.div`
   text-align: left;
   @media (min-width: 768px) {
     width: 50%;
+  }
+`;
+
+const Wrapper = styled.p`
+  max-width: ${(props) => props.isWide ? '1200px' : '950px'};
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3rem auto;
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+  @media (min-width: 1024px) {
+    margin: 4rem auto;
+    padding: 0;
   }
 `;
 
