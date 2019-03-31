@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
-import { css } from '@emotion/core';
 
 import Wrapper from '../partials/wrapper';
 import H1 from '../partials/h-one';

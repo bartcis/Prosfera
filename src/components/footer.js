@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import { css } from '@emotion/core';
 
 import logo from '../images/prosfera_logo_white.svg';
 import Wrapper from './partials/wrapper';
