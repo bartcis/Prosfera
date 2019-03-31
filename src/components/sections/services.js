@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from 'gatsby';
 import Wrapper from '../partials/wrapper';
 import H1 from '../partials/h-one';
 import H3 from '../partials/h-three';
-import Text from '../partials/text';
 import ServicesImage from '../assets/services';
 
 const Column = styled.div`
@@ -15,6 +14,28 @@ const Column = styled.div`
   @media (min-width: 768px) {
     width: 50%;
   }
+`;
+
+const Text = styled.p`
+    max-width: ${(props) => props.isWide ? '100%' : '500px'};
+    margin: ${(props) => props.isWhite ? '2rem auto' : ''};
+    font-size: ${(props) => props.isSmall ? '.75rem' : '.9rem'};
+    font-weight: 200;
+    font-family: 'Montserrat';
+    color: ${(props) => props.isWhite ?
+        ({theme}) => theme.colors.white :
+        ({theme}) => theme.colors.darkBlue};
+    z-index: 100;
+    position: relative;
+    padding: 0 1rem;
+    @media (min-width: 768px) {
+        font-size: ${(props) => props.isSmall ? '.8rem' : '1rem'};
+        padding: 0;
+    }
+    @media (min-width: 1024px) {
+        font-size: ${(props) => props.isSmall ? '1rem' : '1.25rem'};
+        padding: 0;
+    }
 `;
 
 const WideColumn = styled.div`
