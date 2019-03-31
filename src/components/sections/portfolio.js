@@ -55,7 +55,7 @@ const Item = styled(Link)`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 100%;
+    width: 300px;
     height: 150px;
     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     @media (min-width: 768px) {
@@ -67,6 +67,7 @@ const Item = styled(Link)`
   }
   .description {
     height: 150px;
+    width: 300px;
     padding: 2rem 0;
     @media (min-width: 600px) {
         padding: 2rem;
@@ -79,7 +80,7 @@ const Item = styled(Link)`
     }
   }
   .extra {
-    width: 100%;
+    width: 300px;
     height: 20px;
     background-color: ${({theme}) => theme.colors.blue};
     position: absolute;
