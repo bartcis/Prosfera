@@ -36,8 +36,8 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `admin.pro-sfera.pl`,
-        protocol: `https`,
+        baseUrl: `kanciak247.usermd.net`,
+        protocol: `http`,
         hostingWPCOM: false,
         useACF: true,
       },
