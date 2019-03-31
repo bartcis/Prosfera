@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.p`
+const Wrapper = styled.div`
   max-width: ${(props) => props.isWide ? '1200px' : '950px'};
   margin: auto;
   text-align: center;

@@ -120,9 +120,7 @@ const Item = styled(Link)`
 
 const Container = styled.div`
   position: relative;
-  height: auto;
-  width: 100%;
-  overflow: hidden;
+  width: 100vw;
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap;
@@ -163,11 +161,6 @@ const Icon = styled.div`
   }
 `;
 
-const WideColumn = styled.div`
-  width: 100%;
-  margin-bottom: 2rem;
-`;
-
 const Portfolio = () => (
   <StaticQuery
     query = {graphql`
@@ -200,10 +193,8 @@ const Portfolio = () => (
   render = { data => (
     <>
       <Wrapper>
-        <WideColumn>
-          <H3>Sprawdź</H3>
-          <H1>Wybrane Realizacje</H1> 
-        </WideColumn>
+        <H3>Sprawdź</H3>
+        <H1>Wybrane Realizacje</H1> 
       </Wrapper>
       <Container>
         <Description>
