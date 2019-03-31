@@ -58,6 +58,9 @@ const Menu = styled(PosedMenu)`
   padding: 2rem;
   width: 105vw;
   transition: all .25s cubic-bezier(0.47, 0, 0.75, 0.72);
+  @media (min-width: 600px) {
+    display: none;
+  }
 `;
 
 const MobileLink = styled(Link)`
