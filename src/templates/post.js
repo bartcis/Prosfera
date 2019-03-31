@@ -85,6 +85,9 @@ const Info = styled.div`
   @media (min-width: 768px) {
     padding: 4rem 0 0;
   }
+  @media (min-width: 1440px) {
+    padding: 6rem 0 0;
+  }
   p {
     position: relative;
     font-size: .8rem;

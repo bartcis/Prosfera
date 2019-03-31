@@ -9,7 +9,7 @@ const Container = styled.div`
   cursor: pointer;
   margin: 0 1rem;
   position: relative;
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     display: none;
   }
 `;
@@ -40,11 +40,12 @@ const BarRotated = styled.div`
 
 const PosedMenu = posed.div({
   visible: {
-    x: 0,
+    x: '-5%',
     opacity: 1,
+
   },
   hidden: {
-    x: '100%',
+    x: '200%',
     opacity: 0,
   },
 });
@@ -53,14 +54,10 @@ const Menu = styled(PosedMenu)`
   height: auto;
   background-color: rgba(255, 255, 255, .9);
   position: absolute;
-  top: 110px;
+  top: 105px;
   padding: 2rem;
-  width: 100vw;
-  left: 0;
+  width: 105vw;
   transition: all .25s cubic-bezier(0.47, 0, 0.75, 0.72);
-  @media (min-width: 360px) {
-    top: 100px;
-  }
 `;
 
 const MobileLink = styled(Link)`

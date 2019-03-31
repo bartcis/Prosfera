@@ -151,6 +151,10 @@ const Menu = styled.div`
   }
 `;
 
+    display: none;
+  }
+`;
+
 class Header extends Component {
   constructor(props){
     super(props);
@@ -212,7 +216,7 @@ class Header extends Component {
               <span onClick={() => this.props.scrollTo('about')}>O Firmie</span>
               <span onClick={() => this.props.scrollTo('contact-form')}>Kontakt</span>
             </Menu>
-            <MobileMenu></MobileMenu>
+            <Hamburger></Hamburger>
           </Navigation>
         </Content>
       </StyledWrapper>
