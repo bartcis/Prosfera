@@ -11,13 +11,12 @@ import ButtonLink from '../partials/button-link';
 
 import sketchIcon from '../../images/sketch.svg';
 
-const Description = styled(Link)`
+const Description = styled.div`
   height: auto;
-  width: 100%;
+  max-width: 300px;
   text-align: center;
-  text-decoration: none;
   @media (min-width: 600px) {
-    width: 70%;
+    max-width: 400px;
     margin: 2rem;
   }
   @media (min-width: 768px) {
@@ -42,14 +41,16 @@ const Description = styled(Link)`
   }
 `;
 
-const Item = styled(Description)`
+const Item = styled(Link)`
   text-align: left;
   background-color: ${({theme}) => theme.colors.white};
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  margin: 1rem 0;
+  margin: 1rem;
+  width: 300px;
+  text-decoration: none;
   .image {
     background-repeat: no-repeat;
     background-position: center;
