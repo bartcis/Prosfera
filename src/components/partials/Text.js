@@ -21,5 +21,4 @@ const Text = styled.p`
         padding: 0;
     }
 `;
-
 export default Text;

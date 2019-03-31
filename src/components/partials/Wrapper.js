@@ -16,5 +16,4 @@ const Wrapper = styled.p`
     padding: 0;
   }
 `;
-
 export default Wrapper;

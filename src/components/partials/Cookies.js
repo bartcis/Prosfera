@@ -2,7 +2,6 @@ import { Link } from 'gatsby'
 import React, { Component } from 'react'
 import styled from 'styled-components';
 import posed from 'react-pose';
-
 import Text from './text';
 import Button from './button';
 
