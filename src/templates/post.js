@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
-import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
 import { theme } from '../components/utils/theme';
@@ -29,24 +28,39 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Post = styled.div`
-  margin-top: 120px;
+  margin-top: 100px;
 
 `;
 
 const View = styled.div`
-  height: 60vh;
+  height: 550px;
   position: relative;
-  width: 100%;
-  margin: 2rem 0;
+  @media (min-width: 667px) {
+    height: 500px;
+  }
+  @media (min-width: 1440px) {
+    height: 600px;
+  }
 `;
 
 const Image = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 300px;
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
+  margin: 1rem 0;
+  z-index: 900;
+  @media (min-width: 1024px) {
+    height: 500px;
+    margin: 2rem 0;
+  }
+`;
+
+const HeroImage = styled(Image)`
+  width: 100%;
+  height: 100% !important;
 `;
 
 const Cover = styled.div`
@@ -67,34 +81,48 @@ const Info = styled.div`
   left: 0;
   right: 0;
   text-align: center;
-  padding: 5rem 0 0;
+  padding: 2rem 0 0;
+  @media (min-width: 768px) {
+    padding: 4rem 0 0;
+  }
   p {
     position: relative;
-    font-size: 1.1rem;
+    font-size: .8rem;
     font-weight: 100;
     font-family: 'Montserrat';
     color: ${({theme}) => theme.colors.white};
     z-index: 900;
+    @media (min-width: 414px) {
+      font-size: .9rem;
+    }
+    @media (min-width: 1024px) {
+      font-size: 1.1rem;
+    }
   }
   .bold {
     font-weight: 400;
   }
 `;
 
+const ArtWrapper = styled(Wrapper)`
+  margin: 0;
+  @media (min-width: 1024px) {
+    margin: 3rem auto;
+  }
+`;
+
 const Column = styled.div`
-    width: 100%;
-    padding: 1rem;
-    text-align: left;
-    @media (min-width: 768px) {
-        width: 50%;
-    }
+  width: 100%;
+  padding: 1rem;
+  text-align: left;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 
 class PostTemplate extends Component {
   render() {
     const post = this.props.data.wordpressPost;
-
-    console.log(post);
 
     return (
       <ThemeProvider theme={theme}>
@@ -104,65 +132,49 @@ class PostTemplate extends Component {
           <BlockHeader/>
           <Post>
             <View>
-              <Image css={css`
-                background-image: url(${post.featured_media.localFile.childImageSharp.fluid.src});
-              `}></Image>
+              <HeroImage style={{ backgroundImage: `url(${post.featured_media.localFile.childImageSharp.fluid.src})` }}></HeroImage>
               <Cover></Cover>
               <Info>
                 <H1 isWhite isHero dangerouslySetInnerHTML={{__html: post.title}}/>
                 <p dangerouslySetInnerHTML={{__html: post.acf.krotki_opis}}/>
-                <Wrapper>
+                <ArtWrapper>
                   <Column>
                     <p>
-                      <span className="bold">Miejsce Projektu: </span>
-                      {post.acf.miejsce_projektu}
+                      <span>Miejsce Projektu: </span>
+                      <span className="bold">{post.acf.miejsce_projektu}</span>
                     </p>
                     <p>
-                      <span className="bold">Rok Realizacji: </span>
-                      {post.acf.rok_realizacji}
+                      <span>Rok Realizacji: </span>
+                      <span className="bold">{post.acf.rok_realizacji}</span>
                     </p>
                     <p>
-                      <span className="bold">Typ Budynku: </span>
-                      {post.acf.typ_budynku}
+                      <span>Typ Budynku: </span>
+                      <span className="bold">{post.acf.typ_budynku}</span>
                     </p>
                     <p>
-                      <span className="bold">Przeznaczenie Budynku: </span>
-                      {post.acf.przeznaczenie_budynku}
+                      <span>Przeznaczenie Budynku: </span>
+                      <span className="bold">{post.acf.przeznaczenie_budynku}</span>
                     </p>
                     <p>
-                      <span className="bold">Długość Położonej Instalacji: </span>
-                      {post.acf.dlugosc_instalacji}
+                      <span>Długość Położonej Instalacji: </span>
+                      <span className="bold">{post.acf.dlugosc_instalacji}</span>
                     </p>
                   </Column>
-                  <Column dangerouslySetInnerHTML={{__html: post.acf.dlugi_opis}}/>
-                </Wrapper>
+                  <Column>
+                    <p dangerouslySetInnerHTML={{__html: post.acf.dlugi_opis}} />
+                  </Column>
+                </ArtWrapper>
               </Info>
             </View>
             <Wrapper>
               <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_1_opis}} />
-              <View>
-                <Image css={css`
-                  background-image: url(${post.acf.foto_1.localFile.childImageSharp.fluid.src});
-                `}></Image>
-              </View>
+              <Image style={{ backgroundImage: `url(${post.acf.foto_1.localFile.childImageSharp.fluid.src})` }}></Image>
               <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_2_opis}} />
-              <View>
-                <Image css={css`
-                  background-image: url(${post.acf.foto_2.localFile.childImageSharp.fluid.src});
-                `}></Image>
-              </View>
+              <Image style={{ backgroundImage: `url(${post.acf.foto_2.localFile.childImageSharp.fluid.src})` }}></Image>
               <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_3_opis}} />
-              <View>
-                <Image css={css`
-                  background-image: url(${post.acf.foto_3.localFile.childImageSharp.fluid.src});
-                `}></Image>
-              </View>
+              <Image style={{ backgroundImage: `url(${post.acf.foto_3.localFile.childImageSharp.fluid.src})` }}></Image>
               <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_4_opis}} />
-              <View>
-                <Image css={css`
-                  background-image: url(${post.acf.foto_4.localFile.childImageSharp.fluid.src});
-                `}></Image>
-              </View>
+              <Image style={{ backgroundImage: `url(${post.acf.foto_4.localFile.childImageSharp.fluid.src})` }}></Image>
             </Wrapper>
           </Post>
           <Footer/>

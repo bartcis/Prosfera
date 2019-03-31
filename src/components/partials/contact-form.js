@@ -8,13 +8,17 @@ import spinner from '../../images/prosfera_logo_favi.svg';
 const Form = styled.form`
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
   max-width: 600px;
-  margin: 2rem auto;
-  padding: 3rem 2rem;
+  margin: 2rem 1rem;
+  padding: 2rem 1rem;
   text-align: left;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
+  @media (min-width: 600px) {
+    padding: 3rem 2rem;
+    margin: 2rem auto;
+  }
 `;
 
 const Input = styled.input`

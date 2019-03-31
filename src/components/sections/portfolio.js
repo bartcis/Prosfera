@@ -49,15 +49,24 @@ const Item = styled(Link)`
   position: relative;
   overflow: hidden;
   margin: 1rem;
-  width: 300px;
+  width: 260px;
   text-decoration: none;
+  @media (min-width: 414px) {
+    width: 300px;
+  }
+  @media (min-width: 1500px) {
+    margin: 1rem 2.5rem;
+  }
   .image {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 300px;
+    width: 260px;
     height: 150px;
     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    @media (min-width: 414px) {
+      width: 300px;
+    }
     @media (min-width: 768px) {
       height: 200px;
     }
@@ -67,20 +76,23 @@ const Item = styled(Link)`
   }
   .description {
     height: 150px;
-    width: 300px;
+    width: 260px;
     padding: 2rem 0;
+    @media (min-width: 414px) {
+      width: 300px;
+    }
     @media (min-width: 600px) {
-        padding: 2rem;
+      padding: 2rem;
     }
     @media (min-width: 768px) {
-        height: 200px;
+      height: 200px;
     }
     @media (min-width: 1280px) {
-        padding: 2rem 1rem;
+      padding: 2rem 1rem;
     }
   }
   .extra {
-    width: 300px;
+    width: 260px;
     height: 20px;
     background-color: ${({theme}) => theme.colors.blue};
     position: absolute;
@@ -92,6 +104,9 @@ const Item = styled(Link)`
     color: ${({theme}) => theme.colors.white};
     font-family: 'Montserrat';
     font-weight: 100;
+    @media (min-width: 414px) {
+      width: 300px;
+    }
     ::after {
       content: 'Szczegóły inwestycji';
       opacity: 0;

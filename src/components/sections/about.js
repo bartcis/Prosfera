@@ -14,9 +14,14 @@ const Column = styled.div`
   width: 100%;
   padding: 0 1rem 1rem;
   text-align: left;
+  align-self: flex-start;
   @media (min-width: 600px) {
-    width: 50%;
+    width: 45%;
     padding: 1rem;
+    margin: 0 2.5%;
+  }
+  p {
+    margin-top: 0;
   }
 `;
 
@@ -57,6 +62,7 @@ const AboutImage = styled.div`
   height: 100%;
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
   min-height: 250px;
+  margin-bottom: 2rem;
 `;
 
 const About = () => (
@@ -109,10 +115,7 @@ const About = () => (
           <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie_3}</Text>
         </Column>
         <Column>
-           <AboutImage css={css`
-            background-image: 
-            url(${data.allWordpressPage.edges[2].node.acf.prezes_foto.localFile.childImageSharp.fluid.src});
-          `}></AboutImage>
+           <AboutImage style={{ backgroundImage: `url(${data.allWordpressPage.edges[2].node.acf.prezes_foto.localFile.childImageSharp.fluid.src})` }}></AboutImage>
           <Text isSmall>Kamil Kudyba. Właściciel Prosfery.</Text>
         </Column>
       </Wrapper>

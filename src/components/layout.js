@@ -18,6 +18,8 @@ const mapStateToProps = (state) => ({
 const Scroller = styled.div`
   display: block;
   margin: 4rem 0;
+  position: relative;
+  z-index: 900;
   @media (min-width: 600px) {
     margin: 8rem 0;
   }

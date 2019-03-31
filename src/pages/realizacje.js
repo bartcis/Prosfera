@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
-import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 
@@ -78,7 +77,7 @@ const ProjectImage = styled.div`
     width: 600px;
   }
   @media (min-width: 1280px) {
-    min-height: 400px;
+    min-height: 440px;
   }
 `;
 
@@ -157,11 +156,9 @@ class ProjectPortfolio extends Component {
                 <Box to={`/realizacje/${node.slug}`}>
                   <Description>
                     <H1 isSmall>{node.title}</H1>
-                    <Text isSmall>{node.acf.dlugi_opis}</Text>
+                    <Text>{node.acf.dlugi_opis}</Text>
                   </Description>
-                  <ProjectImage css={css`
-                        background-image: url(${node.featured_media.localFile.childImageSharp.fluid.src});
-                    `}>
+                  <ProjectImage style={{ backgroundImage: `url(${node.featured_media.localFile.childImageSharp.fluid.src})` }}>
                   </ProjectImage>
                 </Box>
               </Project>

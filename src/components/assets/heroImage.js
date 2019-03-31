@@ -119,13 +119,17 @@ const StyledHero = ({scrollTo}) => (
             width: 100%;
             height: 500px;
             text-align: center;
-            padding: 125px 10px 50px;
+            padding: 150px 10px 50px;
             box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
             @media (min-width: 414px) {
-              padding: 200px 20px 50px;
+              padding: 150px 20px 50px;
             }
             @media (min-width: 768px) {
+              padding: 200px 20px 50px;
               height: 600px;
+            }
+            @media (min-width: 1024px) {
+              padding: 180px 20px 50px;
             }
             @media (min-width: 1440px) {
               height: 700px;
@@ -139,7 +143,11 @@ const StyledHero = ({scrollTo}) => (
             margin: auto;
           `} dangerouslySetInnerHTML={{__html: pageData.tytul_glowny}}/>
           <Text isWhite dangerouslySetInnerHTML={{__html: pageData.tekst_pod_tytulem}}/>
-          <Button isWhite onClick={() => scrollTo('contact-form')}>Kontakt</Button>
+          <Button isWhite onClick={() => scrollTo('contact-form')}
+           css={css`
+            margin-top: 0px;
+            `}
+           >Kontakt</Button>
         </BackgroundImage>
       )
     }}
