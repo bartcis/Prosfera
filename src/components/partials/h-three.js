@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import Montserrat from '../assets/montserrat';
 
-const H3 = styled.h3`
-    font-family: 'Montserrat';
+const H3 = styled(Montserrat)`
     font-size: .8rem;
     text-transform: uppercase;
     color: ${(props) => props.isWhite ?
@@ -10,7 +10,6 @@ const H3 = styled.h3`
     color: ${(props) => props.isRed ?
     ({theme}) => theme.colors.red :
     ({theme}) => theme.colors.blue};
-    font-weight: 200;
     margin: 0;
     padding: 0 1rem;
     width: 100%;

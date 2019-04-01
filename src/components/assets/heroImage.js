@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import { scrollTo as scrollToAction } from '../../state/app';
 
 import H1 from '../partials/h-one';
+import Text from '../partials/text';
+import Button from '../partials/button';
 
 const Cover = styled.div`
   position: absolute;
@@ -17,72 +19,6 @@ const Cover = styled.div`
   top: 0;
   left: 0;
   z-index: 1;
-`;
-
-const Text = styled.p`
-    max-width: ${(props) => props.isWide ? '100%' : '500px'};
-    margin: ${(props) => props.isWhite ? '2rem auto' : ''};
-    font-size: ${(props) => props.isSmall ? '.75rem' : '.9rem'};
-    font-weight: 200;
-    font-family: 'Montserrat';
-    color: ${(props) => props.isWhite ?
-        ({theme}) => theme.colors.white :
-        ({theme}) => theme.colors.darkBlue};
-    z-index: 100;
-    position: relative;
-    padding: 0 1rem;
-    @media (min-width: 768px) {
-        font-size: ${(props) => props.isSmall ? '.8rem' : '1rem'};
-        padding: 0;
-    }
-    @media (min-width: 1024px) {
-        font-size: ${(props) => props.isSmall ? '1rem' : '1.25rem'};
-        padding: 0;
-    }
-`;
-
-const Button = styled.button`
-  margin: auto;
-  width: 200px;
-  background-color: transparent;
-  border: 1px solid ${(props) => props.isWhite ?
-    ({theme}) => theme.colors.white :
-    ({theme}) => theme.colors.darkBlue};
-  padding: 1rem 2rem;
-  font-family: 'Montserrat';
-  cursor: pointer;
-  margin-top: 2rem;
-  font-weight: 100;
-  font-size: 1rem;
-  position: relative;
-  transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  color: ${(props) => props.isWhite ?
-    ({theme}) => theme.colors.white :
-    ({theme}) => theme.colors.darkBlue};
-  z-index: 100;
-  
-  ::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 0%;
-    background-color: ${(props) => props.isWhite ?
-      ({theme}) => theme.colors.white :
-      ({theme}) => theme.colors.darkBlue};
-    bottom: 0;
-    left: 0;
-    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    z-index: -1;
-  }
-
-  :hover {
-    color: ${(props) => props.isWhite ?
-      ({theme}) => theme.colors.darkBlue :
-      ({theme}) => theme.colors.white};
-    ::before {  
-      height: 100%;
-    } 
-  }
 `;
 
 const StyledHero = ({scrollTo}) => (

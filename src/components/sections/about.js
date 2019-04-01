@@ -120,7 +120,7 @@ const About = () => (
       </Wrapper>
       <Wrapper>
         <WideColumn>
-          <H3>Co mówią o nas</H3>
+          <H3>Co o nas mówią</H3>
           <H1>Referencje</H1> 
         </WideColumn>
         <NarrowColumn>

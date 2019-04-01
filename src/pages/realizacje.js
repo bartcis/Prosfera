@@ -156,7 +156,7 @@ class ProjectPortfolio extends Component {
                 <Box to={`/realizacje/${node.slug}`}>
                   <Description>
                     <H1 isSmall>{node.title}</H1>
-                    <Text>{node.acf.dlugi_opis}</Text>
+                    <Text isShort>{node.acf.dlugi_opis}</Text>
                   </Description>
                   <ProjectImage style={{ backgroundImage: `url(${node.featured_media.localFile.childImageSharp.fluid.src})` }}>
                   </ProjectImage>

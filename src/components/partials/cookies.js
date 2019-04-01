@@ -23,7 +23,7 @@ const Container = styled(PosedContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
   font-family: 'Montserrat';
   flex-wrap: wrap;
 `;

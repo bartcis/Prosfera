@@ -11,11 +11,21 @@ import email from '../images/prosfera_head_email.svg';
 import phone from '../images/prosfera_head_phone.svg';
 import MobileMenu from './partials/mobile-menu';
 
+import montserrat2 from '../fonts/montserrat-light-webfont.woff2';
+import montserrat from '../fonts/montserrat-light-webfont.woff';
+
 const StyledWrapper = styled.header`
+  @font-face {
+    font-family: 'montserratlight';
+    src: url(${montserrat2}) format('woff2'),
+      url(${montserrat}) format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'montserratlight';
   background: transparent;
   height: auto;
   padding: 0 1rem;
-  font-family: 'Montserrat';
   position: fixed;
   width: 100vw;
   z-index: 999;

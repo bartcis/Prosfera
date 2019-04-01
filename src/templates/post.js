@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import { theme } from '../components/utils/theme';
+import montserrat2 from '../fonts/montserrat-light-webfont.woff2';
+import montserrat from '../fonts/montserrat-light-webfont.woff';
+
 import SEO from '../components/seo';
 import BlockHeader from '../components/block-header';
 import Footer from '../components/footer';
@@ -89,10 +92,17 @@ const Info = styled.div`
     padding: 6rem 0 0;
   }
   p {
+    @font-face {
+      font-family: 'montserratlight';
+      src: url(${montserrat2}) format('woff2'),
+        url(${montserrat}) format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
     position: relative;
     font-size: .8rem;
-    font-weight: 100;
-    font-family: 'Montserrat';
+    font-family: 'montserratlight';
+    line-height: 1.25;
     color: ${({theme}) => theme.colors.white};
     z-index: 900;
     @media (min-width: 414px) {
@@ -101,9 +111,6 @@ const Info = styled.div`
     @media (min-width: 1024px) {
       font-size: 1.1rem;
     }
-  }
-  .bold {
-    font-weight: 400;
   }
 `;
 
@@ -144,23 +151,23 @@ class PostTemplate extends Component {
                   <Column>
                     <p>
                       <span>Miejsce Projektu: </span>
-                      <span className="bold">{post.acf.miejsce_projektu}</span>
+                      <span><b>{post.acf.miejsce_projektu}</b></span>
                     </p>
                     <p>
                       <span>Rok Realizacji: </span>
-                      <span className="bold">{post.acf.rok_realizacji}</span>
+                      <span><b>{post.acf.rok_realizacji}</b></span>
                     </p>
                     <p>
                       <span>Typ Budynku: </span>
-                      <span className="bold">{post.acf.typ_budynku}</span>
+                      <span><b>{post.acf.typ_budynku}</b></span>
                     </p>
                     <p>
                       <span>Przeznaczenie Budynku: </span>
-                      <span className="bold">{post.acf.przeznaczenie_budynku}</span>
+                      <span><b>{post.acf.przeznaczenie_budynku}</b></span>
                     </p>
                     <p>
                       <span>Długość Położonej Instalacji: </span>
-                      <span className="bold">{post.acf.dlugosc_instalacji}</span>
+                      <span><b>{post.acf.dlugosc_instalacji}</b></span>
                     </p>
                   </Column>
                   <Column>

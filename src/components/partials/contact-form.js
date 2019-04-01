@@ -228,7 +228,11 @@ class ContactForm extends Component {
     );
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form method='post'
+            name='contact'
+            data-netlify='true'
+            data-netlify-honeypot='bot-field'
+        >
         {this.state.loader ? spinner : ''}
         {this.state.success ? success : ''}
         {this.state.failed ? failure : ''}
