@@ -24,13 +24,9 @@ const Description = styled.div`
     margin: 2rem;
   }
   @media (min-width: 1024px) {
-    width: 350px;
-  }
-  @media (min-width: 1280px) {
-    width: 250px;
+    width: 200px;
   }
   @media (min-width: 1440px) {
-    width: 300px;
     margin: 2rem 1rem;
   }
   @media (min-width: 1500px) {

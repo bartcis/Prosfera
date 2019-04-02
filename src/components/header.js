@@ -130,7 +130,9 @@ const Menu = styled.div`
   font-weight: 100;
   border-bottom: 1px solid rgba(255, 255, 255, .5);
   padding: 1rem 0rem;
+  width: 430px;
   display: none;
+  text-align: center;
   @media (min-width: 600px) {
     display: block;
   }
