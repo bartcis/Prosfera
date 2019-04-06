@@ -75,7 +75,7 @@ const Opacity = styled.div`
     width: 100%;
     line-height: 1.5;
     font-size: 1.25rem;
-    font-family: 'Montserrat';
+    font-family: 'montserratlight';
   }
 `;
 
@@ -180,7 +180,6 @@ class ContactForm extends Component {
         success: !prevState.success,
       }));
     } else {
-      console.log('response')
       this.setState(prevState => ({
         loader: !prevState.loader,
         failed: !prevState.failed,
