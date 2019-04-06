@@ -57,7 +57,10 @@ const Contact = styled.div`
 const Method = styled.div`
   font-weight: 100;
   font-size: .8rem;
-  padding: 0 .4rem;
+  padding: 0 .3rem;
+  @media (min-width: 360px) {
+    padding: 0 .9rem;
+  }
   @media (min-width: 768px) {
     padding: 0 .5rem;
     display: flex;

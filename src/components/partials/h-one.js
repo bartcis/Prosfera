@@ -1,13 +1,22 @@
 import PlayFair from '../assets/playFair';
 import styled from 'styled-components';
+import montserratBold2 from '../../fonts/montserrat-bold-webfont.woff2';
+import montserratBold from '../../fonts/montserrat-bold-webfont.woff';
 
 const H1 = styled(PlayFair)`
+    @font-face {
+        font-family: 'montserratbold';
+        src: url(${montserratBold2}) format('woff2'),
+            url(${montserratBold}) format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
     font-size: 2rem;
     color: ${(props) => props.isWhite ?
         ({theme}) => theme.colors.white :
         ({theme}) => theme.colors.darkBlue};
     font-weight: 400;
-    font-family: ${(props) => props.isHero ? 'Montserrat' : 'playfair_displaybold'};
+    font-family: ${(props) => props.isHero ? 'montserratbold' : 'playfair_displaybold'};
     font-weight: ${(props) => props.isHero ? '600' : '400'};
     z-index: 100;
     position: relative;

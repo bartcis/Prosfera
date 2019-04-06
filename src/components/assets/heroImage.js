@@ -75,7 +75,7 @@ const StyledHero = ({scrollTo}) => (
         >
           <Cover></Cover>
           <H1 isWhite isHero css={css`
-            max-width: 650px;
+            max-width: 750px;
             margin: auto;
           `} dangerouslySetInnerHTML={{__html: pageData.tytul_glowny}}/>
           <Text isWhite dangerouslySetInnerHTML={{__html: pageData.tekst_pod_tytulem}}/>

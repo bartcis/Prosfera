@@ -6,6 +6,8 @@ import logo from '../images/prosfera_logo_white.svg';
 import Wrapper from './partials/wrapper';
 import H4 from './partials/h-four';
 import Text from './partials/text';
+import montserrat2 from '../fonts/montserrat-light-webfont.woff2';
+import montserrat from '../fonts/montserrat-light-webfont.woff';
 
 const Logo = styled.div`
   width: 150px;
@@ -89,6 +91,14 @@ const FooterText = styled(Text)`
 `;
 
 const FooterLink = styled(Link)`
+  @font-face {
+    font-family: 'montserratlight';
+    src: url(${montserrat2}) format('woff2'),
+      url(${montserrat}) format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'montserratlight';
   color: ${({theme}) => theme.colors.white};
   transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
   text-decoration: none;
@@ -129,7 +139,7 @@ const Footer = () => (
       <Wrapper>
         <WideColumn>
           <Logo></Logo>
-          <FooterText isWhite>{data.allWordpressPage.edges[2].node.acf.tekst_na_samym_dole}
+          <FooterText isWhite isLeft>{data.allWordpressPage.edges[2].node.acf.tekst_na_samym_dole}
           </FooterText>
         </WideColumn>
         <NarrowColumn>
@@ -149,28 +159,28 @@ const Footer = () => (
         </NarrowColumn>
         <NarrowColumn>
           <H4 isWhite>DANE FIRMY</H4>
-          <FooterText isWhite>Prosfera</FooterText>
-          <FooterText isWhite>Kamil Kudyba</FooterText>
-          <FooterText isWhite>ul. Komedy 1/36</FooterText>
-          <FooterText isWhite>52-234 Wrocław</FooterText>
-          <FooterText isWhite>NIP: 921 187 37 64</FooterText>
+          <FooterText isWhite isLeft>Prosfera</FooterText>
+          <FooterText isWhite isLeft>Kamil Kudyba</FooterText>
+          <FooterText isWhite isLeft>ul. Komedy 1/36</FooterText>
+          <FooterText isWhite isLeft>52-234 Wrocław</FooterText>
+          <FooterText isWhite isLeft>NIP: 921 187 37 64</FooterText>
         </NarrowColumn>
         <NarrowColumn>
           <H4 isWhite>SZYBKI KONTAKT</H4>
-          <FooterText isWhite>Właścicel:</FooterText>
-          <FooterText isWhite>Kamil Kudyba</FooterText>
-          <FooterText isWhite>+48 792 187 247</FooterText>
-          <FooterText isWhite>kamil.kudyba@pro-sfera.pl</FooterText><br></br>
-          <FooterText isWhite>Kierownik Robót:</FooterText>
-          <FooterText isWhite>Łukasz Kudyba</FooterText>
-          <FooterText isWhite>+48 791 791 765</FooterText>
-          <FooterText isWhite>lukasz.kudyba@pro-sfera.pl</FooterText>
+          <FooterText isWhite isLeft>Właścicel:</FooterText>
+          <FooterText isWhite isLeft>Kamil Kudyba</FooterText>
+          <FooterText isWhite isLeft>+48 792 187 247</FooterText>
+          <FooterText isWhite isLeft>kamil.kudyba@pro-sfera.pl</FooterText><br></br>
+          <FooterText isWhite isLeft>Kierownik Robót:</FooterText>
+          <FooterText isWhite isLeft>Łukasz Kudyba</FooterText>
+          <FooterText isWhite isLeft>+48 791 791 765</FooterText>
+          <FooterText isWhite isLeft>lukasz.kudyba@pro-sfera.pl</FooterText>
         </NarrowColumn>
         <FullColumn>
-          <FooterText isWhite>
+          <FooterText isWhite isLeft>
             <FooterLink to="/polityka-prywatnosci">Polityka Prywatności</FooterLink>
           </FooterText>
-          <FooterText isWhite>ⓒ {(new Date().getFullYear())} Prosfera powered by 
+          <FooterText isWhite isLeft>ⓒ {(new Date().getFullYear())} Prosfera powered by 
             <a rel="noopener noreferrer" href="https://bedekodzic.pl" target="_blank"> bedekodzic.pl</a>
           </FooterText>
         </FullColumn>

@@ -100,7 +100,7 @@ const Info = styled.div`
       font-style: normal;
     }
     position: relative;
-    font-size: .8rem;
+    font-size: .9rem;
     font-family: 'montserratlight';
     line-height: 1.25;
     color: ${({theme}) => theme.colors.white};
@@ -177,13 +177,13 @@ class PostTemplate extends Component {
               </Info>
             </View>
             <Wrapper>
-              <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_1_opis}} />
+              <Text isWide isLeft dangerouslySetInnerHTML={{__html: post.acf.foto_1_opis}} />
               <Image style={{ backgroundImage: `url(${post.acf.foto_1.localFile.childImageSharp.fluid.src})` }}></Image>
-              <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_2_opis}} />
+              <Text isWide isLeft dangerouslySetInnerHTML={{__html: post.acf.foto_2_opis}} />
               <Image style={{ backgroundImage: `url(${post.acf.foto_2.localFile.childImageSharp.fluid.src})` }}></Image>
-              <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_3_opis}} />
+              <Text isWide isLeft dangerouslySetInnerHTML={{__html: post.acf.foto_3_opis}} />
               <Image style={{ backgroundImage: `url(${post.acf.foto_3.localFile.childImageSharp.fluid.src})` }}></Image>
-              <Text isWide dangerouslySetInnerHTML={{__html: post.acf.foto_4_opis}} />
+              <Text isWide isLeft dangerouslySetInnerHTML={{__html: post.acf.foto_4_opis}} />
               <Image style={{ backgroundImage: `url(${post.acf.foto_4.localFile.childImageSharp.fluid.src})` }}></Image>
             </Wrapper>
           </Post>

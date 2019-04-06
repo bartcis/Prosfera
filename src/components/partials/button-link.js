@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import montserrat2 from '../../fonts/montserrat-light-webfont.woff2';
+import montserrat from '../../fonts/montserrat-light-webfont.woff';
 
 const ButtonLink = styled(Link)`
+  @font-face {
+    font-family: 'montserratlight';
+    src: url(${montserrat2}) format('woff2'),
+      url(${montserrat}) format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'montserratlight';
   margin: auto;
   width: 200px;
   text-align: center;
@@ -9,7 +19,6 @@ const ButtonLink = styled(Link)`
     ({theme}) => theme.colors.white :
     ({theme}) => theme.colors.darkBlue};
   padding: 1rem 2rem;
-  font-family: 'Montserrat';
   text-decoration: none;
   cursor: pointer;
   margin-top: 2rem;

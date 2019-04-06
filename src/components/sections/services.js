@@ -9,9 +9,8 @@ import Text from '../partials/text';
 import ServicesImage from '../assets/services';
 
 const Column = styled.div`
-    width: 100%;
+  width: 100%;
   padding: 1rem;
-  text-align: left;
   @media (min-width: 768px) {
     width: 50%;
   }
@@ -51,12 +50,12 @@ const Services = () => (
             <H1>Oferowane usługi</H1> 
           </WideColumn>
           <Column>       
-            <Text>{data.allWordpressPage.edges[2].node.acf.usluga_1}</Text>
-            <Text>{data.allWordpressPage.edges[2].node.acf.usluga_2}</Text>
-            <Text>{data.allWordpressPage.edges[2].node.acf.usluga_3}</Text>
-            <Text>{data.allWordpressPage.edges[2].node.acf.usluga_4}</Text>
-            <Text>{data.allWordpressPage.edges[2].node.acf.usluga_5}</Text>
-            <Text>{data.allWordpressPage.edges[2].node.acf.usluga_6}</Text>
+            <Text isLeft>{data.allWordpressPage.edges[2].node.acf.usluga_1}</Text>
+            <Text isLeft>{data.allWordpressPage.edges[2].node.acf.usluga_2}</Text>
+            <Text isLeft>{data.allWordpressPage.edges[2].node.acf.usluga_3}</Text>
+            <Text isLeft>{data.allWordpressPage.edges[2].node.acf.usluga_4}</Text>
+            <Text isLeft>{data.allWordpressPage.edges[2].node.acf.usluga_5}</Text>
+            <Text isLeft>{data.allWordpressPage.edges[2].node.acf.usluga_6}</Text>
           </Column>
           <Column>
             <ServicesImage></ServicesImage>

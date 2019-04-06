@@ -12,7 +12,6 @@ import TestimonialsImage from '../assets/testimonialsImage';
 const Column = styled.div`
   width: 100%;
   padding: 0 1rem 1rem;
-  text-align: left;
   align-self: flex-start;
   @media (min-width: 600px) {
     width: 45%;
@@ -31,7 +30,6 @@ const WideColumn = styled.div`
 
 const NarrowColumn = styled.div`
   width: 100%;
-  height: 200px;
   box-shadow: 0px 10px 30px 0px ${({theme}) => theme.colors.shadow};
   margin: 1rem;
   padding: 2rem 0;
@@ -109,9 +107,9 @@ const About = () => (
           <H1>O nas</H1> 
         </WideColumn>
         <Column>
-          <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie}</Text>
-          <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie_2}</Text>
-          <Text>{data.allWordpressPage.edges[2].node.acf.o_fimie_3}</Text>
+          <Text isLeft>{data.allWordpressPage.edges[2].node.acf.o_fimie}</Text>
+          <Text isLeft>{data.allWordpressPage.edges[2].node.acf.o_fimie_2}</Text>
+          <Text isLeft>{data.allWordpressPage.edges[2].node.acf.o_fimie_3}</Text>
         </Column>
         <Column>
            <AboutImage style={{ backgroundImage: `url(${data.allWordpressPage.edges[2].node.acf.prezes_foto.localFile.childImageSharp.fluid.src})` }}></AboutImage>

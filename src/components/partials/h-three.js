@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Montserrat from '../assets/montserrat';
 
 const H3 = styled(Montserrat)`
-    font-size: .8rem;
+    font-size: 1rem;
     text-transform: uppercase;
     color: ${(props) => props.isWhite ?
         ({theme}) => theme.colors.white :
@@ -15,7 +15,6 @@ const H3 = styled(Montserrat)`
     width: 100%;
     @media (min-width: 600px) {
         padding: 0;
-        font-size: 1rem;
     }
 `;
 

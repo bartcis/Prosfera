@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import montserrat2 from '../../fonts/montserrat-light-webfont.woff2';
+import montserrat from '../../fonts/montserrat-light-webfont.woff';
 
 import Wrapper from '../partials/wrapper';
 import H1 from '../partials/h-one';
@@ -38,7 +40,6 @@ const Description = styled.div`
 `;
 
 const Item = styled(Link)`
-  text-align: left;
   background-color: ${({theme}) => theme.colors.white};
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
   cursor: pointer;
@@ -88,6 +89,14 @@ const Item = styled(Link)`
     }
   }
   .extra {
+    @font-face {
+      font-family: 'montserratlight';
+      src: url(${montserrat2}) format('woff2'),
+        url(${montserrat}) format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    font-family: 'montserratlight';
     width: 260px;
     height: 20px;
     background-color: ${({theme}) => theme.colors.blue};
@@ -98,7 +107,6 @@ const Item = styled(Link)`
     justify-content: center;
     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     color: ${({theme}) => theme.colors.white};
-    font-family: 'Montserrat';
     font-weight: 100;
     @media (min-width: 414px) {
       width: 300px;
@@ -218,7 +226,7 @@ const Portfolio = () => (
             <div className="image" style={{ backgroundImage: `url(${node.featured_media.localFile.childImageSharp.fluid.src})` }}></div>
             <div className="description">
               <H2>{node.title}</H2>
-              <Text isSmall>{node.acf.krotki_opis}</Text>   
+              <Text isSmall isLeft>{node.acf.krotki_opis}</Text>   
             </div>
             <div className="extra"></div>
           </Item>

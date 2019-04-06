@@ -4,8 +4,17 @@ import styled, {keyframes} from 'styled-components';
 import H3 from './h-three';
 import Button from './button';
 import spinner from '../../images/prosfera_logo_favi.svg';
+import montserrat2 from '../../fonts/montserrat-light-webfont.woff2';
+import montserrat from '../../fonts/montserrat-light-webfont.woff';
 
 const Form = styled.form`
+  @font-face {
+    font-family: 'montserratlight';
+    src: url(${montserrat2}) format('woff2'),
+      url(${montserrat}) format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
   box-shadow: 0px 10px 40px 0px ${({theme}) => theme.colors.shadow};
   max-width: 600px;
   margin: 2rem 1rem;
@@ -24,7 +33,7 @@ const Form = styled.form`
 const Input = styled.input`
   padding: .75rem;
   font-weight: 200;
-  font-family: 'Montserrat';
+  font-family: 'montserratlight';
   margin: .5rem 0 1rem;
   width: 100%;
   border: 1px solid ${({theme}) => theme.colors.blue};
@@ -38,7 +47,7 @@ const Input = styled.input`
 const Textarea = styled.textarea`
   padding: .75rem;
   font-weight: 200;
-  font-family: 'Montserrat';
+  font-family: 'montserratlight';
   margin: .5rem 0 1rem;
   width: 100%;
   border: 1px solid ${({theme}) => theme.colors.blue};
@@ -149,14 +158,19 @@ class ContactForm extends Component {
       message: this.state.message
     });
 
-    const request = await fetch('http://localhost:4000/form', {
+    const request = await fetch('https://mail.kanciak247.usermd.net/form', {
       method: 'post',
       body,
       headers: {
         'content-type': 'application/json',
       }
     })
-    .catch(error => console.log(Error(error)));
+    .catch(error => 
+        this.setState(prevState => ({
+          loader: !prevState.loader,
+          failed: !prevState.failed,
+        }))
+      );
 
     const response = await request.json();
 
@@ -166,6 +180,7 @@ class ContactForm extends Component {
         success: !prevState.success,
       }));
     } else {
+      console.log('response')
       this.setState(prevState => ({
         loader: !prevState.loader,
         failed: !prevState.failed,
@@ -228,11 +243,7 @@ class ContactForm extends Component {
     );
 
     return (
-      <Form method='post'
-            name='contact'
-            data-netlify='true'
-            data-netlify-honeypot='bot-field'
-        >
+      <Form onSubmit={this.handleSubmit}>
         {this.state.loader ? spinner : ''}
         {this.state.success ? success : ''}
         {this.state.failed ? failure : ''}
